@@ -43,9 +43,9 @@ const name = personal.firstName.toLowerCase();
 
 const profession = [
   "Frontend Developer",
-  "Next.js / TypeScript",
+  "Performance & Animation",
   "Modern UI Design",
-  "React Ecosystem",
+  "Clean Code & Structure",
 ];
 
 const professionMobile = ["Frontend", "Next.js", "UI Design"];
@@ -79,7 +79,7 @@ export default function Hero() {
             alt={personal.fullName}
             onLoad={() => setImgLoaded(true)}
             fill
-            className={`dark:brightness-75 duration-300 object-cover rounded sm:rounded-xl dark:grayscale-100 transition-opacity ${
+            className={`dark:brightness-75 duration-300 object-cover rounded sm:rounded-xl transition-opacity ${
               imgLoaded ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -106,10 +106,10 @@ export default function Hero() {
         <h1
           data-heading={name}
           className="relative uppercase tracking-widest sm:tracking-wide text-[27vw] 2xl:text-[280px] text-center mx-auto w-fit font-black font-oxanium italic xl:font-audiowide select-none
-            text-black dark:text-white
-            after:content-[attr(data-heading)] after:absolute after:inset-0 after:z-30 after:text-transparent
-            after:[-webkit-text-stroke:2px_white] xl:after:[-webkit-text-stroke:1px_white]
-            dark:after:[-webkit-text-stroke:2px_rgba(255,255,255,0.12)] dark:xl:after:[-webkit-text-stroke:1px_rgba(255,255,255,0.12)]"
+          text-black dark:text-white
+          after:content-[attr(data-heading)] after:absolute after:inset-0 after:z-30 after:text-transparent
+          after:[-webkit-text-stroke:2px_white] xl:after:[-webkit-text-stroke:1px_white]
+          dark:after:[-webkit-text-stroke:2px_black] dark:xl:after:[-webkit-text-stroke:1px_rgba(0,0,0,0.5)]"
         >
           <span className="flex justify-center">
             {name.split("").map((letter, i) => (
@@ -183,9 +183,9 @@ export default function Hero() {
           custom={1}
           initial="hidden"
           animate="visible"
-          className="text-center text-xs sm:text-sm text-secondary/60 mt-4 font-figtree font-normal tracking-normal normal-case"
+          className="text-center text-xs sm:text-sm text-secondary/80 mt-4 font-figtree font-normal tracking-normal normal-case"
         >
-          Crafting fast, modern & visually stunning frontends with{" "}
+          Building performant, pixel-perfect UIs with{" "}
           <span className="text-accent font-semibold">
             Next.js & TypeScript
           </span>
@@ -206,7 +206,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9 + i * 0.06, duration: 0.3 }}
-              className="px-2.5 py-1 text-[10px] sm:text-xs font-medium rounded-lg bg-accent/8 border border-accent/20 text-accent/80 font-figtree tracking-normal normal-case"
+              className="px-2.5 py-1 text-[10px] sm:text-xs font-medium rounded-lg bg-accent/8 border border-accent/20 text-accent/80 dark:text-[#39ff6a] font-figtree tracking-normal normal-case"
             >
               {s}
             </motion.span>
@@ -234,7 +234,7 @@ export default function Hero() {
             href="#contact"
             fillColor="#39ff6a"
             textHoverColor="#000000"
-            className="px-5 py-2.5 rounded-full border border-black/10 dark:border-white/10 text-sm font-semibold"
+            className="px-5 py-2.5 rounded-full border border-black/40 dark:border-white/30 text-sm font-semibold"
           >
             Contact Me
           </MagneticButton>
