@@ -1,179 +1,352 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Container from "@/src/components/ui/Container";
 import SectionHeader from "@/src/components/ui/SectionHeader";
 import { motion, useInView } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma,
+  FaJs,
+  FaReact,
+  FaGitAlt,
+  FaGithub,
+  FaFigma,
 } from "react-icons/fa6";
 import {
-  SiTailwindcss, SiNextdotjs, SiTypescript, SiExpress, SiMongodb,
-  SiFirebase, SiFramer, SiGsap, SiRedux, SiPostman, SiVercel,
-  SiCloudinary, SiOpenai,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiTypescript,
+  SiFirebase,
+  SiFramer,
+  SiRedux,
+  SiVercel,
+  SiCloudinary,
+  SiOpenai,
 } from "react-icons/si";
-import {
-  TbBrandAdobePhotoshop, TbBrandAdobeXd,
-} from "react-icons/tb";
-import { MdCode, MdStorage, MdOutlineBrush, MdOutlineSmartToy } from "react-icons/md";
+import { MdOutlineSmartToy } from "react-icons/md";
 
-const skillGroups = [
+gsap.registerPlugin(ScrollTrigger);
+
+// ─── Data
+
+// "Featured" skills — shown large with icon + name + tier
+const featured = [
   {
-    title: "Frontend",
-    icon: <MdCode />,
-    color: "from-violet-500/15 to-blue-500/10",
-    accent: "#7c3aed",
-    items: [
-      { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-      { name: "CSS", icon: <FaCss3 className="text-blue-500" /> },
-      { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-      { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-      { name: "React", icon: <FaReact className="text-cyan-400" /> },
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400" /> },
-      { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
-      { name: "Framer", icon: <SiFramer /> },
-      { name: "GSAP", icon: <SiGsap className="text-green-400" /> },
-    ],
+    name: "React",
+    icon: <FaReact />,
+    color: "#61dafb",
+    tier: "Expert",
+    year: "2 yrs",
   },
   {
-    title: "Backend",
-    icon: <MdStorage />,
-    color: "from-emerald-500/15 to-teal-500/10",
-    accent: "#059669",
-    items: [
-      { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
-      { name: "Express", icon: <SiExpress /> },
-      { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-      { name: "Firebase", icon: <SiFirebase className="text-yellow-500" /> },
-    ],
+    name: "Next.js",
+    icon: <SiNextdotjs />,
+    color: null,
+    tier: "Expert",
+    year: "1 yrs",
   },
   {
-    title: "Tools",
+    name: "JavaScript",
+    icon: <FaJs />,
+    color: "#f0c000",
+    tier: "Expert",
+    year: "1+ yrs",
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript />,
+    color: "#3178c6",
+    tier: "Proficient",
+    year: "1 yr",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss />,
+    color: "#06b6d4",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  
+  {
+    name: "Git",
     icon: <FaGitAlt />,
-    color: "from-rose-500/15 to-orange-500/10",
-    accent: "#e11d48",
-    items: [
-      { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
-      { name: "GitHub", icon: <FaGithub /> },
-      { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
-      { name: "Vercel", icon: <SiVercel /> },
-      { name: "Cloudinary", icon: <SiCloudinary className="text-blue-500" /> },
-    ],
+    color: "#e34f26",
+    tier: "Expert",
+    year: "2 yrs",
   },
   {
-    title: "Design",
-    icon: <MdOutlineBrush />,
-    color: "from-pink-500/15 to-rose-500/10",
-    accent: "#db2777",
-    items: [
-      { name: "Figma", icon: <FaFigma className="text-pink-500" /> },
-      { name: "Photoshop", icon: <TbBrandAdobePhotoshop className="text-blue-500" /> },
-      { name: "Adobe XD", icon: <TbBrandAdobeXd className="text-pink-500" /> },
-    ],
+    name: "GitHub",
+    icon: <FaGithub />,
+    color: "#1572b6",
+    tier: "Expert",
+    year: "2 yrs",
   },
   {
-    title: "AI & Productivity",
-    icon: <MdOutlineSmartToy />,
-    color: "from-amber-500/15 to-yellow-500/10",
-    accent: "#d97706",
-    items: [
-      { name: "AI Tools", icon: <SiOpenai /> },
-      { name: "Prompt Engineering", icon: <MdOutlineSmartToy className="text-amber-500" /> },
-    ],
+    name: "Framer Motion",
+    icon: <SiFramer />,
+    color: null,
+    tier: "Proficient",
+    year: "1 yr",
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase />,
+    color: "#ffca28",
+    tier: "Proficient",
+    year: "1 yr",
+  },
+  {
+    name: "Redux",
+    icon: <SiRedux />,
+    color: "#764abc",
+    tier: "Proficient",
+    year: "1 yr",
   },
 ];
 
-function SkillCard({ group, index }) {
+// "Also use" skills — compact pills
+const secondary = [
+  { name: "Vercel", icon: <SiVercel />, color: null },
+  { name: "Cloudinary", icon: <SiCloudinary />, color: "#3448c5" },
+  { name: "Figma", icon: <FaFigma />, color: "#f24e1e" },
+  { name: "AI Tools", icon: <SiOpenai />, color: null },
+  { name: "Prompt Eng", icon: <MdOutlineSmartToy />, color: "#f59e0b" },
+];
+
+const tierColor = {
+  Expert:
+    "text-violet-600 dark:text-violet-400 bg-violet-500/10 dark:bg-violet-400/12",
+  Proficient: "text-sky-600 dark:text-sky-400 bg-sky-500/10 dark:bg-sky-400/12",
+  Familiar:
+    "text-amber-600 dark:text-amber-400 bg-amber-500/10 dark:bg-amber-400/12",
+};
+
+// ─── Featured card ────────────────────────────────────────────────────────────
+
+function FeaturedCard({ skill, index }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  // GSAP: card slides up + fades in on scroll, staggered by index
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 36 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.65,
+        ease: "power3.out",
+        delay: index * 0.06,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, [index]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.97 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative rounded-2xl border border-black/8 dark:border-white/8 bg-white dark:bg-white/4 overflow-hidden hover:border-accent/40 transition-all duration-300"
+      className="group relative flex flex-col gap-3 p-4 sm:p-5 rounded-2xl border border-black/[0.07] dark:border-white/[0.07] bg-white dark:bg-white/[0.03] overflow-hidden cursor-default transition-all duration-300 hover:-translate-y-1 hover:border-[--color-accent]/35 hover:shadow-lg hover:shadow-black/[0.07] dark:hover:shadow-black/30"
+      style={{ opacity: 0 }} // GSAP controls opacity
     >
-      {/* Gradient bg */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${group.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      {/* Radial glow behind icon on hover */}
+      <div
+        className="absolute -top-6 -left-6 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
+        style={{ background: skill.color || "#7c3aed" }}
+      />
 
-      <div className="relative p-5 sm:p-6">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-5">
-          <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
-            style={{ background: `${group.accent}18`, color: group.accent }}
-          >
-            {group.icon}
-          </div>
-          <div>
-            <h3 className="font-bold text-sm uppercase tracking-wider" style={{ color: group.accent }}>
-              {group.title}
-            </h3>
-            <p className="text-[10px] text-secondary/40">{group.items.length} technologies</p>
-          </div>
-        </div>
-
-        {/* Skills grid */}
-        <div className="flex flex-wrap gap-2">
-          {group.items.map((item, idx) => (
-            <motion.span
-              key={idx}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: index * 0.1 + idx * 0.04, duration: 0.35 }}
-              whileHover={{ y: -2, scale: 1.04, transition: { duration: 0.15 } }}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg bg-black/4 dark:bg-white/5 border border-black/6 dark:border-white/6 hover:border-accent/40 hover:text-accent hover:bg-accent/5 transition-all duration-200 cursor-default"
-            >
-              <span className="text-base leading-none">{item.icon}</span>
-              {item.name}
-            </motion.span>
-          ))}
-        </div>
+      {/* Icon */}
+      <div
+        className="relative z-10 w-11 h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+        style={{ background: `${skill.color || "#888"}18` }}
+      >
+        <span
+          className="text-2xl leading-none"
+          style={{ color: skill.color || undefined }}
+        >
+          {skill.icon}
+        </span>
       </div>
-    </motion.div>
+
+      {/* Name + year */}
+      <div className="relative z-10">
+        <p className="text-sm font-bold text-black dark:text-white leading-tight">
+          {skill.name}
+        </p>
+        <p className="text-[11px] text-black/35 dark:text-white/30 mt-0.5">
+          {skill.year}
+        </p>
+      </div>
+
+      {/* Tier badge */}
+      <span
+        className={`relative z-10 self-start text-[10px] font-bold px-2 py-0.5 rounded-lg ${tierColor[skill.tier]}`}
+      >
+        {skill.tier}
+      </span>
+
+      {/* Bottom accent line — slides in on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[--color-accent] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+    </div>
   );
 }
 
-export default function Skills() {
+// ─── Secondary pill ───────────────────────────────────────────────────────────
+
+function SecondaryPill({ skill, index }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      { opacity: 0, scale: 0.88 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        ease: "back.out(1.4)",
+        delay: index * 0.04,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 92%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, [index]);
+
   return (
-    <section id="skills" className="py-20 md:py-28 bg-[#f8f7ff] dark:bg-[#0c0b18]">
+    <div
+      ref={ref}
+      className="group flex items-center gap-2 px-3.5 py-2 rounded-xl border border-black/[0.07] dark:border-white/[0.07] bg-white dark:bg-white/[0.03] cursor-default transition-all duration-200 hover:border-[--color-accent]/30 hover:bg-[--color-accent]/[0.04]"
+      style={{ opacity: 0 }}
+    >
+      <span
+        className="text-base leading-none transition-transform duration-200 group-hover:scale-110"
+        style={{ color: skill.color || undefined }}
+      >
+        {skill.icon}
+      </span>
+      <span className="text-xs font-semibold text-black/70 dark:text-white/65 group-hover:text-black dark:group-hover:text-white transition-colors duration-200">
+        {skill.name}
+      </span>
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
+export default function Skills() {
+  const headingRef = useRef(null);
+
+  // GSAP: animate the divider line between sections
+  useEffect(() => {
+    const line = document.querySelector("#skills-divider");
+    if (!line) return;
+
+    gsap.fromTo(
+      line,
+      { scaleX: 0 },
+      {
+        scaleX: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: line,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, []);
+
+  return (
+    <section
+      id="skills"
+      className="py-20 md:py-28 bg-[#f8f7ff] dark:bg-[#0c0b18]"
+    >
       <Container>
-        <SectionHeader text="Skills & Tools" colorWord="Tools"/>
+        <SectionHeader text="Skills & Tools" colorWord="Tools" />
 
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55 }}
-          className="text-center text-sm text-secondary/60 max-w-md mx-auto mb-4"
+          transition={{ duration: 0.5 }}
+          className="text-center text-sm text-black/45 dark:text-white/45 max-w-lg mx-auto mb-14"
         >
-          Technologies I use to build modern, scalable and high-performance applications.
+          Technologies I reach for when building modern, production-grade web
+          applications.
         </motion.p>
 
-        {/* Total count pill */}
+        {/* ── Featured skills ── */}
+        <div className="mb-3">
+          <motion.p
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-[11px] font-black uppercase tracking-[0.2em] text-black/35 dark:text-white/30 mb-5 flex items-center gap-2"
+          >
+            <span className="w-4 h-px bg-[--color-accent] inline-block" />
+            Daily drivers
+          </motion.p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {featured.map((skill, i) => (
+              <FeaturedCard key={skill.name} skill={skill} index={i} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── Divider ── */}
+        <div
+          id="skills-divider"
+          className="my-10 h-px bg-black/[0.07] dark:bg-white/[0.07] origin-left"
+        />
+
+        {/* ── Secondary skills ── */}
+        <div>
+          <motion.p
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-[11px] font-black uppercase tracking-[0.2em] text-black/35 dark:text-white/30 mb-5 flex items-center gap-2"
+          >
+            <span className="w-4 h-px bg-[--color-accent] inline-block" />
+            Also in the toolkit
+          </motion.p>
+
+          <div className="flex flex-wrap gap-2.5">
+            {secondary.map((skill, i) => (
+              <SecondaryPill key={skill.name} skill={skill} index={i} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── Total count pill ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex justify-center mb-12"
+          transition={{ delay: 0.3 }}
+          className="flex justify-center mt-14"
         >
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            20+ Technologies
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[--color-accent]/10 border border-[--color-accent]/20 text-[--color-accent] text-xs font-bold uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-[--color-accent] animate-pulse" />
+            {featured.length + secondary.length} Technologies
           </span>
         </motion.div>
-
-        {/* Masonry-ish layout */}
-        <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => (
-            <div key={i} className={i === 0 ? "sm:col-span-2 lg:col-span-1" : ""}>
-              <SkillCard group={group} index={i} />
-            </div>
-          ))}
-        </div>
       </Container>
     </section>
   );
