@@ -3,8 +3,14 @@ export const personal = {
   firstName: "Mahmud",
   fullName: "Al Mahmud",
   email: "mahmud.dev.bd@gmail.com",
+  emailLink: "https://mail.google.com/mail/?view=cm&to=mahmud.dev.bd@gmail.com",
+
   phone: "01870758677",
+  phoneLink: "tel:+8801870758677",
+
   whatsapp: "8801870758677",
+  whatsappLink: "https://wa.me/8801870758677",
+
   location: "Dhaka, Bangladesh",
   role: "Frontend Developer",
 

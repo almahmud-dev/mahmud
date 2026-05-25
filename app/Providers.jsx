@@ -1,6 +1,5 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
 import Themes from "@/src/components/ui/Themes";
 import Loader from "@/src/components/ui/Loader";
 import MouseTracker from "@/src/components/ui/MouseTracker";
@@ -31,16 +30,14 @@ export function Providers({ children }) {
 
   return (
     <div className="overflow-x-clip max-w-screen">
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <ParticlesBackground />
-        {!mobile && <MouseTracker />}
-        <Themes />
-        <div className="noise-bg">
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </div>
-      </ThemeProvider>
+      <ParticlesBackground />
+      {!mobile && <MouseTracker />}
+      <Themes />
+      <div className="noise-bg">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </div>
     </div>
   );
 }

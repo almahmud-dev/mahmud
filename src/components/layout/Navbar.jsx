@@ -83,27 +83,27 @@ export default function Navbar() {
     {
       icon: <FaEnvelope />,
       label: personal.email,
-      href: `mailto:${personal.email}`,
+      href: personal.emailLink,
     },
     {
       icon: <FaGithub />,
       label: "GitHub",
-      href: `https://github.com/${personal.github}`,
+      href: personal.social.github,
     },
     {
       icon: <FaLinkedinIn />,
       label: "LinkedIn",
-      href: `https://linkedin.com/in/${personal.linkedin}`,
+      href: personal.social.linkedin,
     },
     {
       icon: <FaPhone />,
       label: personal.phone,
-      href: `tel:+88${personal.phone}`,
+      href: personal.phoneLink,
     },
     {
       icon: <FaWhatsapp />,
       label: "WhatsApp",
-      href: `https://wa.me/${personal.whatsapp}`,
+      href: personal.social.whatsapp,
     },
   ];
 
@@ -122,7 +122,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-8 px-4">
           <button onClick={() => handleNav("hero")}>
-            <Logo className="w-[70px] md:w-[60px] h-auto" />
+            <Logo className="w-[70px] md:w-[60px] h-auto" accentColor="var(--color-accent)"/>
           </button>
 
           {/* Desktop nav - pill style */}
@@ -257,8 +257,12 @@ export default function Navbar() {
                   <a
                     key={i}
                     href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={s.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      s.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-xl bg-black/4 dark:bg-white/5 border border-black/8 dark:border-white/8 hover:border-accent hover:text-accent transition-all duration-200"
                   >
                     <span className="text-accent">{s.icon}</span>

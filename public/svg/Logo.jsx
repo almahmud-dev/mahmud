@@ -1,6 +1,9 @@
 "use client";
 
-export default function Logo({ className }) {
+export default function Logo({
+  className,
+  accentColor = "var(--color-accent)",
+}) {
   return (
     <svg
       viewBox="0 0 300 300"
@@ -9,32 +12,11 @@ export default function Logo({ className }) {
       fill="none"
     >
       <path
-        d="
-          M80 65
-          L150 125
-          L220 65
-          L220 245
-          L185 215
-          L185 140
-          L150 170
-          L115 140
-          L115 215
-          L80 245
-          Z
-        "
+        d="M80 65 L150 125 L220 65 L220 245 L185 215 L185 140 L150 170 L115 140 L115 215 L80 245 Z"
         fill="url(#grad)"
       />
-
       <path
-        d="
-          M120 165
-          L150 190
-          L180 165
-          L180 195
-          L150 220
-          L120 195
-          Z
-        "
+        d="M120 165 L150 190 L180 165 L180 195 L150 220 L120 195 Z"
         fill="url(#grad)"
       />
 
@@ -47,8 +29,8 @@ export default function Logo({ className }) {
           y2="245"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#B14DFF" />
-          <stop offset="1" stopColor="#6C2BD9" />
+          <stop stopColor={accentColor} />
+          <stop offset="1" stopColor={accentColor} stopOpacity="0.6" />
         </linearGradient>
       </defs>
     </svg>
