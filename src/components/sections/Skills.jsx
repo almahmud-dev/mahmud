@@ -121,7 +121,7 @@ const tierColor = {
     "text-amber-600 dark:text-amber-400 bg-amber-500/10 dark:bg-amber-400/12",
 };
 
-// ─── Featured card ────────────────────────────────────────────────────────────
+// ─── Featured card
 
 function FeaturedCard({ skill, index }) {
   const ref = useRef(null);
@@ -197,7 +197,7 @@ function FeaturedCard({ skill, index }) {
   );
 }
 
-// ─── Secondary pill ───────────────────────────────────────────────────────────
+// ─── Secondary pill 
 
 function SecondaryPill({ skill, index }) {
   const ref = useRef(null);
@@ -243,7 +243,7 @@ function SecondaryPill({ skill, index }) {
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Main component 
 
 export default function Skills() {
   const headingRef = useRef(null);
