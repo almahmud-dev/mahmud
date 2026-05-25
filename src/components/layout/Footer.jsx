@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 import { personal } from "@/src/data/personal";
 
 const socials = [
-  { icon: <FaGithub />, href: `https://github.com/${personal.github}`, label: "GitHub" },
-  { icon: <FaLinkedinIn />, href: `https://linkedin.com/in/${personal.linkedin}`, label: "LinkedIn" },
-  { icon: <FaEnvelope />, href: `mailto:${personal.email}`, label: "Email" },
-  { icon: <FaWhatsapp />, href: `https://wa.me/${personal.whatsapp}`, label: "WhatsApp" },
+  { icon: <FaGithub />, href: personal.social.github, label: "GitHub" },
+  { icon: <FaLinkedinIn />, href: personal.social.linkedin, label: "LinkedIn" },
+  { icon: <FaEnvelope />, href: personal.social.email, label: "Email" },
+  { icon: <FaWhatsapp />, href: personal.social.whatsapp, label: "WhatsApp" },
 ];
 
 const navLinks = ["About", "Skills", "Projects", "Testimonials", "Contact"];

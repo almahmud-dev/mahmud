@@ -11,5 +11,7 @@ export const personal = {
   social: {
     github: "https://github.com/almahmud-dev",
     linkedin: "https://www.linkedin.com/in/al-mahmud-dev",
+    whatsapp: "https://wa.me/8801870758677",
+    email: "https://mail.google.com/mail/?view=cm&to=mahmud.dev.bd@gmail.com",
   },
 };
