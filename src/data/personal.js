@@ -5,8 +5,11 @@ export const personal = {
   email: "mahmud.dev.bd@gmail.com",
   phone: "01870758677",
   whatsapp: "8801870758677",
-  github: "almahmud-dev",
-  linkedin: "al-mahmud-dev",
   location: "Dhaka, Bangladesh",
-  role: "Full Stack Developer",
+  role: "Frontend Developer",
+
+  social: {
+    github: "https://github.com/almahmud-dev",
+    linkedin: "https://www.linkedin.com/in/al-mahmud-dev",
+  },
 };

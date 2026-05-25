@@ -4,6 +4,7 @@ import Container from "@/src/components/ui/Container";
 import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { personal } from "@/src/data/personal";
+import MagneticButton from "../ui/MagneticButton";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -78,8 +79,7 @@ export default function About() {
           className="text-4xl sm:text-5xl md:text-6xl xl:text-[50px] font-semibold leading-[1.05] tracking-tight max-w-4xl mb-14 text-gray-900 dark:text-white"
         >
           Specializing in modern web technologies,{" "}
-          <br className="hidden md:block" />
-          I turn complex ideas into{" "}
+          <br className="hidden md:block" />I turn complex ideas into{" "}
           <span className="text-accent dark:text-[#39ff6a]">
             fast, reliable,
           </span>{" "}
@@ -88,7 +88,6 @@ export default function About() {
 
         {/* ── Three-column layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 min-h-[580px] border border-gray-100 dark:border-white/10">
-
           {/* ── LEFT — bio + socials ── */}
           <motion.div
             variants={fadeUp}
@@ -111,7 +110,7 @@ export default function About() {
                     <span className="text-2xl font-black text-accent dark:text-[#39ff6a] font-oxanium">
                       {s.val}
                     </span>
-                    <span className="text-[10px] text-gray-400 dark:text-white/30 uppercase tracking-wider">
+                    <span className="text-[10px] text-black/60 dark:text-white/80 uppercase tracking-wider">
                       {s.lbl}
                     </span>
                   </div>
@@ -119,10 +118,10 @@ export default function About() {
               </div>
 
               {/* Bio text */}
-              <p className="text-sm leading-relaxed text-gray-500 dark:text-white/50">
-                I specialize in system architecture and scalable web engineering.
-                From backend services to frontend performance, I approach
-                development with structure, clarity, and long-term thinking.
+              <p className="text-sm leading-relaxed text-black dark:text-white/80">
+                I specialize in frontend development, creating responsive and
+                intuitive web experiences with a strong focus on performance,
+                accessibility, and clean code.
               </p>
             </div>
 
@@ -181,17 +180,19 @@ export default function About() {
             viewport={{ once: true }}
             className="flex flex-col justify-end p-8 lg:p-10 gap-6 border-t lg:border-t-0 lg:border-l border-gray-100 dark:border-white/10"
           >
-            <p className="text-sm leading-relaxed text-gray-500 dark:text-white/50">
-              Over the years, I've led architectural initiatives, optimized
-              high-traffic applications, and contributed to technical
-              decision-making that supports product growth. I believe strong
-              engineering is defined not just by delivery, but by durability.
+            <p className="text-sm leading-relaxed text-black dark:text-white/80">
+              Over time, I’ve focused on improving user interfaces, optimizing
+              performance, and refining frontend experiences. I enjoy building
+              interfaces that are not only functional but also smooth and
+              user-friendly.
             </p>
 
             {/* CTA button */}
-            <a
+            <MagneticButton
               href="#contact"
-              className="inline-flex items-center gap-3 self-start px-6 py-3.5 bg-accent dark:bg-[#39ff6a] text-white dark:text-black text-xs font-bold tracking-widest hover:opacity-90 transition-opacity duration-200 rounded-sm"
+              fillColor="#F5F0E8"
+              textHoverColor="#000000"
+              className="self-start px-7 py-3.5 bg-[#39ff6a] text-black text-xs font-bold tracking-widest rounded-sm"
             >
               GET IN TOUCH
               <svg
@@ -207,7 +208,7 @@ export default function About() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </MagneticButton>
           </motion.div>
         </div>
       </Container>
