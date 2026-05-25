@@ -64,13 +64,17 @@ export default function Hero() {
 
   return (
     <section id="hero" className="py-10 sm:py-20 lg:py-30 relative">
-      <div className="relative py-26 xs:py-30 md:py-20 xl:py-8 2xl:py-10">
+      <div className="relative py-26 xs:py-30 md:py-20 xl:py-15 2xl:py-18">
         {/* Photo */}
         <motion.div
           variants={imgVariant}
           initial="hidden"
           animate="visible"
-          className="absolute aspect-4/6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:-translate-y-[60%] z-20 w-[65vw] sm:w-80 lg:w-100"
+          className="absolute aspect-4/6 top-1/2 left-1/2 
+          -translate-x-1/2 -translate-y-1/2 
+          sm:-translate-y-[60%]
+          z-20 
+          w-50 xs:w-60 sm:w-78 md:w-70 lg:w-72 xl:w-80 2xl:w-96"
         >
           <Image
             src={imgPlace}
@@ -105,11 +109,8 @@ export default function Hero() {
         {/* Big name */}
         <h1
           data-heading={name}
-          className="relative uppercase tracking-widest sm:tracking-wide text-[27vw] 2xl:text-[280px] text-center mx-auto w-fit font-black font-oxanium italic xl:font-audiowide select-none
-          text-black dark:text-white
-          after:content-[attr(data-heading)] after:absolute after:inset-0 after:z-30 after:text-transparent
-          after:[-webkit-text-stroke:2px_white] xl:after:[-webkit-text-stroke:1px_white]
-          dark:after:[-webkit-text-stroke:2px_black] dark:xl:after:[-webkit-text-stroke:1px_rgba(0,0,0,0.5)]"
+          className="relative uppercase text-center mx-auto w-fit font-black italic font-audiowide select-none text-black dark:text-white"
+          style={{ fontSize: "clamp(60px, 17vw, 280px)" }}
         >
           <span className="flex justify-center">
             {name.split("").map((letter, i) => (
