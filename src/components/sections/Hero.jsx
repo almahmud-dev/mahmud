@@ -5,6 +5,7 @@ import imgPlace from "@/public/image/image.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { personal } from "@/src/data/personal";
+import MagneticButton from "../ui/MagneticButton";
 
 const letterVariants = {
   hidden: { y: 120, opacity: 0, skewY: 10 },
@@ -21,7 +22,11 @@ const fadeUp = {
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.55 + i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      delay: 0.55 + i * 0.1,
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
   }),
 };
 
@@ -45,7 +50,14 @@ const profession = [
 
 const professionMobile = ["Frontend", "Next.js", "UI Design"];
 
-const stacks = ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "GSAP"];
+const stacks = [
+  "Next.js",
+  "TypeScript",
+  "React",
+  "Tailwind CSS",
+  "Framer Motion",
+  "GSAP",
+];
 
 export default function Hero() {
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -53,7 +65,6 @@ export default function Hero() {
   return (
     <section id="hero" className="py-10 sm:py-20 lg:py-30 relative">
       <div className="relative py-26 xs:py-30 md:py-20 xl:py-8 2xl:py-10">
-
         {/* Photo */}
         <motion.div
           variants={imgVariant}
@@ -84,7 +95,9 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 px-3 py-2 rounded-xl backdrop-blur-md bg-black/40 border border-white/15 text-white">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium tracking-wide">Open to work</span>
+              <span className="text-[10px] sm:text-xs font-medium tracking-wide">
+                Open to work
+              </span>
             </div>
           </motion.div>
         </motion.div>
@@ -116,7 +129,6 @@ export default function Hero() {
       </div>
 
       <Container className="p-5 sm:p-0 font-audiowide">
-
         {/* Roles — mobile */}
         <motion.div
           variants={fadeUp}
@@ -126,9 +138,15 @@ export default function Hero() {
         >
           {professionMobile.map((p, i) => (
             <div key={i} className="flex items-center gap-1 sm:gap-2">
-              <span className="text-xs hidden sm:block tracking-widest text-accent">0{i + 1}.</span>
-              <span className="text-xs sm:hidden tracking-widest text-accent font-bold">/</span>
-              <span className="font-bold text-xs xs:text-sm sm:text-lg uppercase tracking-tight">{p}</span>
+              <span className="text-xs hidden sm:block tracking-widest text-accent">
+                0{i + 1}.
+              </span>
+              <span className="text-xs sm:hidden tracking-widest text-accent font-bold">
+                /
+              </span>
+              <span className="font-bold text-xs xs:text-sm sm:text-lg uppercase tracking-tight">
+                {p}
+              </span>
             </div>
           ))}
         </motion.div>
@@ -149,8 +167,12 @@ export default function Hero() {
               animate="visible"
               className="flex items-center gap-2 xl:gap-3"
             >
-              <span className="text-xs tracking-widest text-accent">0{i + 1}.</span>
-              <span className="font-bold xl:text-lg uppercase tracking-tight">{p}</span>
+              <span className="text-xs tracking-widest text-accent">
+                0{i + 1}.
+              </span>
+              <span className="font-bold xl:text-lg uppercase tracking-tight">
+                {p}
+              </span>
             </motion.div>
           ))}
         </motion.div>
@@ -164,7 +186,10 @@ export default function Hero() {
           className="text-center text-xs sm:text-sm text-secondary/60 mt-4 font-figtree font-normal tracking-normal normal-case"
         >
           Crafting fast, modern & visually stunning frontends with{" "}
-          <span className="text-accent font-semibold">Next.js & TypeScript</span>.
+          <span className="text-accent font-semibold">
+            Next.js & TypeScript
+          </span>
+          .
         </motion.p>
 
         {/* Tech stack chips */}
@@ -196,20 +221,24 @@ export default function Hero() {
           animate="visible"
           className="flex gap-3 mt-5 xs:mt-6 justify-center font-figtree"
         >
-          <a
-            href="#projects"
-            className="px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:shadow-lg hover:shadow-accent/30 hover:scale-105 transition-all duration-300"
+          <MagneticButton
+            href="/image/cv.pdf"
+            fillColor="#000000"
+            textHoverColor="#39ff6a"
+            className="px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold"
           >
-            View Projects
-          </a>
-          <a
+            Download CV
+          </MagneticButton>
+
+          <MagneticButton
             href="#contact"
-            className="px-5 py-2.5 rounded-full border border-black/10 dark:border-white/10 text-sm font-semibold hover:scale-105 hover:shadow-lg hover:shadow-accent/30 hover:border-accent hover:text-accent transition-all duration-300"
+            fillColor="#39ff6a"
+            textHoverColor="#000000"
+            className="px-5 py-2.5 rounded-full border border-black/10 dark:border-white/10 text-sm font-semibold"
           >
             Contact Me
-          </a>
+          </MagneticButton>
         </motion.div>
-
       </Container>
     </section>
   );
