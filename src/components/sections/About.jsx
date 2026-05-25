@@ -192,7 +192,7 @@ export default function About() {
               href="#contact"
               fillColor="#F5F0E8"
               textHoverColor="#000000"
-              className="self-start px-7 py-3.5 bg-[#39ff6a] text-black text-xs font-bold tracking-widest rounded-sm"
+              className="self-start px-7 py-4.5 bg-lime-400 text-black text-xs font-bold tracking-widest rounded-sm"
             >
               GET IN TOUCH
               <svg

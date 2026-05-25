@@ -12,6 +12,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa6";
 import { personal } from "@/src/data/personal";
+import MagneticButton from "../ui/MagneticButton";
 
 const navItems = [
   { id: "hero", label: "Home" },
@@ -122,7 +123,10 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-8 px-4">
           <button onClick={() => handleNav("hero")}>
-            <Logo className="w-[70px] md:w-[60px] h-auto" accentColor="var(--color-accent)"/>
+            <Logo
+              className="w-[70px] md:w-[60px] h-auto"
+              accentColor="var(--color-accent)"
+            />
           </button>
 
           {/* Desktop nav - pill style */}
@@ -158,14 +162,28 @@ export default function Navbar() {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3 px-4">
-          <a
-            href={`mailto:${personal.email}`}
-            className="hidden lg:flex items-center gap-2 text-xs text-secondary/60 hover:text-accent transition-colors duration-300 font-medium"
+        <div className="flex items-center gap-3 px-4 pt-1">
+          <MagneticButton
+            href="#contact"
+            fillColor="#F5F0E8"
+            textHoverColor="#000000"
+            className="hidden lg:block self-start px-7 py-4.5 bg-lime-400 text-black text-xs font-bold tracking-widest rounded-sm"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            {personal.email}
-          </a>
+            LET'S TALK
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              className="w-4 h-4"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </MagneticButton>
 
           {/* Mobile menu button */}
           <motion.button

@@ -235,7 +235,7 @@ export default function Hero() {
             href="#contact"
             fillColor="#39ff6a"
             textHoverColor="#000000"
-            className="px-5 py-2.5 rounded-full border border-black/40 dark:border-white/30 text-sm font-semibold"
+            className="px-5 py-2.5 rounded-full border border-black/60 dark:border-white/30 text-sm font-semibold"
           >
             Contact Me
           </MagneticButton>

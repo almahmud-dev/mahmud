@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="py-10 md:py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-4">
-            <Logo className="w-[70px] md:w-[60px] h-auto" />
+            <Logo className="w-[70px] md:w-[60px] h-auto" accentColor="var(--color-accent)"/>
             <p className="text-sm text-secondary/80 leading-relaxed max-w-xs">
               Frontend developer who enjoys turning ideas into clean, responsive
               interfaces. Focused on building experiences that feel smooth and
