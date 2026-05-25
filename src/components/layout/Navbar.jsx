@@ -3,12 +3,13 @@ import React, { useEffect, useState, useRef } from "react";
 import Container from "@/src/components/ui/Container";
 import Logo from "@/public/svg/Logo";
 import { motion, AnimatePresence } from "framer-motion";
+import { HiOutlineBars3BottomRight, HiXMark } from "react-icons/hi2";
 import {
-  HiOutlineBars3BottomRight,
-  HiXMark,
-} from "react-icons/hi2";
-import {
-  FaEnvelope, FaGithub, FaLinkedinIn, FaPhone, FaWhatsapp,
+  FaEnvelope,
+  FaGithub,
+  FaLinkedinIn,
+  FaPhone,
+  FaWhatsapp,
 } from "react-icons/fa6";
 import { personal } from "@/src/data/personal";
 
@@ -32,7 +33,9 @@ export default function Navbar() {
       setScrolled(window.scrollY > 30);
 
       // Active section detection
-      const sections = navItems.map((item) => document.getElementById(item.id)).filter(Boolean);
+      const sections = navItems
+        .map((item) => document.getElementById(item.id))
+        .filter(Boolean);
       const scrollPos = window.scrollY + 120;
       for (let i = sections.length - 1; i >= 0; i--) {
         if (sections[i].offsetTop <= scrollPos) {
@@ -49,10 +52,20 @@ export default function Navbar() {
     if (open) {
       const y = window.scrollY;
       Object.assign(document.body.style, {
-        position: "fixed", top: `-${y}px`, left: "0", right: "0", width: "100%",
+        position: "fixed",
+        top: `-${y}px`,
+        left: "0",
+        right: "0",
+        width: "100%",
       });
       return () => {
-        Object.assign(document.body.style, { position: "", top: "", left: "", right: "", width: "" });
+        Object.assign(document.body.style, {
+          position: "",
+          top: "",
+          left: "",
+          right: "",
+          width: "",
+        });
         window.scrollTo(0, y);
       };
     }
@@ -67,11 +80,31 @@ export default function Navbar() {
   };
 
   const socials = [
-    { icon: <FaEnvelope />, label: personal.email, href: `mailto:${personal.email}` },
-    { icon: <FaGithub />, label: "GitHub", href: `https://github.com/${personal.github}` },
-    { icon: <FaLinkedinIn />, label: "LinkedIn", href: `https://linkedin.com/in/${personal.linkedin}` },
-    { icon: <FaPhone />, label: personal.phone, href: `tel:+88${personal.phone}` },
-    { icon: <FaWhatsapp />, label: "WhatsApp", href: `https://wa.me/${personal.whatsapp}` },
+    {
+      icon: <FaEnvelope />,
+      label: personal.email,
+      href: `mailto:${personal.email}`,
+    },
+    {
+      icon: <FaGithub />,
+      label: "GitHub",
+      href: `https://github.com/${personal.github}`,
+    },
+    {
+      icon: <FaLinkedinIn />,
+      label: "LinkedIn",
+      href: `https://linkedin.com/in/${personal.linkedin}`,
+    },
+    {
+      icon: <FaPhone />,
+      label: personal.phone,
+      href: `tel:+88${personal.phone}`,
+    },
+    {
+      icon: <FaWhatsapp />,
+      label: "WhatsApp",
+      href: `https://wa.me/${personal.whatsapp}`,
+    },
   ];
 
   return (
@@ -89,7 +122,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-8 px-4">
           <button onClick={() => handleNav("hero")}>
-            <Logo className="w-8 md:w-9" />
+            <Logo className="w-[70px] md:w-[60px] h-auto" />
           </button>
 
           {/* Desktop nav - pill style */}
@@ -112,7 +145,9 @@ export default function Navbar() {
                 )}
                 <span
                   className={`relative z-10 transition-colors duration-200 ${
-                    active === item.id ? "text-white" : "text-secondary hover:text-accent"
+                    active === item.id
+                      ? "text-white"
+                      : "text-secondary hover:text-accent"
                   }`}
                 >
                   {item.label}
@@ -140,11 +175,23 @@ export default function Navbar() {
           >
             <AnimatePresence mode="wait" initial={false}>
               {open ? (
-                <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <motion.span
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <HiXMark className="text-lg" />
                 </motion.span>
               ) : (
-                <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <motion.span
+                  key="open"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <HiOutlineBars3BottomRight className="text-lg" />
                 </motion.span>
               )}
@@ -172,15 +219,23 @@ export default function Navbar() {
                   onClick={() => handleNav(item.id)}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.055, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{
+                    delay: i * 0.055,
+                    duration: 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   className={`group flex items-center justify-between w-full py-3 px-4 rounded-2xl transition-all duration-200 text-left ${
                     active === item.id
                       ? "bg-accent/10 text-accent"
                       : "hover:bg-black/4 dark:hover:bg-white/4"
                   }`}
                 >
-                  <span className="text-2xl xs:text-3xl font-bold uppercase tracking-tight">{item.label}</span>
-                  <span className={`text-sm font-mono transition-opacity ${active === item.id ? "opacity-100 text-accent" : "opacity-30"}`}>
+                  <span className="text-2xl xs:text-3xl font-bold uppercase tracking-tight">
+                    {item.label}
+                  </span>
+                  <span
+                    className={`text-sm font-mono transition-opacity ${active === item.id ? "opacity-100 text-accent" : "opacity-30"}`}
+                  >
                     0{i + 1}
                   </span>
                 </motion.button>
@@ -194,7 +249,9 @@ export default function Navbar() {
               transition={{ delay: 0.35, duration: 0.4 }}
               className="px-6 pb-6 pt-4 border-t border-black/8 dark:border-white/8"
             >
-              <p className="text-xs text-secondary/40 uppercase tracking-widest mb-3 font-semibold">Connect</p>
+              <p className="text-xs text-secondary/40 uppercase tracking-widest mb-3 font-semibold">
+                Connect
+              </p>
               <div className="flex flex-wrap gap-2">
                 {socials.map((s, i) => (
                   <a

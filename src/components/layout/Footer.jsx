@@ -22,22 +22,22 @@ export default function Footer() {
         <div className="py-10 md:py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-4">
-            <Logo className="w-6 md:w-8" />
-            <p className="text-sm text-secondary/60 leading-relaxed max-w-xs">
-              Full Stack MERN Developer focused on building modern, responsive and user-friendly web experiences.
+            <Logo className="w-[70px] md:w-[60px] h-auto" />
+            <p className="text-sm text-secondary/80 leading-relaxed max-w-xs">
+              Frontend developer who enjoys turning ideas into clean, responsive interfaces. Focused on building experiences that feel smooth and just work using Next.js, React, and Tailwind CSS.
             </p>
             <p className="text-xs text-accent font-semibold">{personal.email}</p>
           </div>
 
           {/* Nav */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-secondary/40">Navigation</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-secondary">Navigation</h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
-                    className="text-sm text-secondary/70 hover:text-accent transition-colors duration-200"
+                    className="text-sm text-secondary/80 hover:text-accent transition-colors duration-200"
                   >
                     {link}
                   </a>
@@ -48,7 +48,7 @@ export default function Footer() {
 
           {/* Social */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-secondary/40">Connect</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-secondary">Connect</h3>
             <div className="flex items-center gap-2.5">
               {socials.map((s, i) => (
                 <motion.a
@@ -65,13 +65,13 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
-            <p className="text-xs text-secondary/50 leading-relaxed">
+            <p className="text-xs text-secondary/80 leading-relaxed">
               Open for freelance projects<br />and full-time remote positions.
             </p>
           </div>
         </div>
 
-        <div className="border-t border-black/8 dark:border-white/8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-secondary/35">
+        <div className="border-t border-black/8 dark:border-white/8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-secondary/80">
           <p>© {new Date().getFullYear()} {personal.fullName}. All rights reserved.</p>
           <p>Built with Next.js, Tailwind CSS & Framer Motion</p>
         </div>
