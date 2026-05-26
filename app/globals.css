@@ -96,6 +96,19 @@ h1[data-heading]::after {
 .dark h1[data-heading]::after {
   -webkit-text-stroke: 2px rgba(0, 0, 0, 0.6);
 }
+/* Testimonial Cards */
+.swiper-wrapper {
+  align-items: stretch !important;
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex !important;
+}
+
+.swiper-slide > * {
+  width: 100%;
+}
 /* Noise texture overlay */
 .noise-bg::before {
   content: "";
