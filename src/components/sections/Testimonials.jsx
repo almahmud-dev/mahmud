@@ -1,18 +1,13 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi2";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 import Container from "../ui/Container";
 import SectionHeader from "../ui/SectionHeader";
-
 import TestimonialCard from "../ui/TestimonialCard";
 import { testimonials } from "@/src/helper/helper";
 
@@ -56,8 +51,11 @@ export default function Testimonials() {
 
       <Container className="relative z-10">
         {/* Section Header */}
-        <SectionHeader text="Client Testimonials" colorWord="Testimonials" />
-
+        <SectionHeader
+          label="Testimonials"
+          text="What Clients Say About Me"
+          colorWord="Say About Me"
+        />
         {/* Sub Text */}
         <p
           className="
@@ -68,7 +66,7 @@ export default function Testimonials() {
           text-center
           text-base
           leading-8
-          text-black/60
+          text-black/80
           dark:text-white/55
           sm:text-lg
         "
@@ -115,7 +113,6 @@ export default function Testimonials() {
           >
             {testimonials.map((item, index) => (
               <SwiperSlide key={item.id} className="h-auto !flex">
-               
                 <TestimonialCard item={item} index={index} />
               </SwiperSlide>
             ))}

@@ -8,23 +8,28 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 const faqData = [
   {
     question: "What technologies do you specialize in?",
-    answer: "I specialize in the MERN stack (MongoDB, Express, React, Node.js) along with Next.js and Tailwind CSS for building high-performance web applications. My focus is on creating scalable architectures with editorial-grade user interfaces.",
+    answer:
+      "I specialize in the MERN stack (MongoDB, Express, React, Node.js) along with Next.js and Tailwind CSS for building high-performance web applications. My focus is on creating scalable architectures with editorial-grade user interfaces.",
   },
   {
     question: "Do you take on freelance projects?",
-    answer: "Yes, I am available for freelance opportunities ranging from single-page landing pages to complex full-stack web applications. I prefer projects that challenge the status quo of digital experiences.",
+    answer:
+      "Yes, I am available for freelance opportunities ranging from single-page landing pages to complex full-stack web applications. I prefer projects that challenge the status quo of digital experiences.",
   },
   {
     question: "How can we start a project together?",
-    answer: "You can reach out via the contact form or email me directly. I usually respond within 24 hours to discuss project details, technical requirements, and potential timelines.",
+    answer:
+      "You can reach out via the contact form or email me directly. I usually respond within 24 hours to discuss project details, technical requirements, and potential timelines.",
   },
   {
     question: "Are you open to full-time remote positions?",
-    answer: "Absolutely! I am always looking for exciting opportunities to contribute to innovative teams globally. I thrive in asynchronous environments that value code quality and design precision.",
+    answer:
+      "Absolutely! I am always looking for exciting opportunities to contribute to innovative teams globally. I thrive in asynchronous environments that value code quality and design precision.",
   },
   {
     question: "What is your typical project timeline?",
-    answer: "Timeline varies based on project complexity. A simple landing page can be done in 1–2 weeks, while a full-stack application typically takes 4–8 weeks. I always communicate clearly about timelines upfront.",
+    answer:
+      "Timeline varies based on project complexity. A simple landing page can be done in 1–2 weeks, while a full-stack application typically takes 4–8 weeks. I always communicate clearly about timelines upfront.",
   },
 ];
 
@@ -34,7 +39,10 @@ export default function Faq() {
   const toggle = (i) => setActiveIndex(activeIndex === i ? null : i);
 
   return (
-    <section id="faq" className="relative py-20 md:py-28 bg-white dark:bg-[#080810]">
+    <section
+      id="faq"
+      className="relative bg-white dark:bg-[#080810]"
+    >
       <Container className="max-w-3xl!">
         <SectionHeader text="FAQs" />
 
@@ -49,7 +57,8 @@ export default function Faq() {
             Frequently Asked <span className="text-accent">Questions</span>
           </h2>
           <p className="text-secondary/60 text-sm max-w-md mx-auto">
-            Transparent insights into my process, technical stack, and availability.
+            Transparent insights into my process, technical stack, and
+            availability.
           </p>
         </motion.div>
 
@@ -77,7 +86,9 @@ export default function Faq() {
                       : "bg-[#f8f7ff] dark:bg-white/4 hover:bg-accent/4 dark:hover:bg-white/6"
                   }`}
                 >
-                  <span className={`font-semibold text-sm sm:text-base pr-4 transition-colors duration-200 ${isOpen ? "text-accent" : ""}`}>
+                  <span
+                    className={`font-semibold text-sm sm:text-base pr-4 transition-colors duration-200 ${isOpen ? "text-accent" : ""}`}
+                  >
                     {item.question}
                   </span>
 
@@ -151,7 +162,9 @@ export default function Faq() {
         >
           <div className="text-center sm:text-left">
             <h4 className="text-xl font-bold">Still have questions?</h4>
-            <p className="text-secondary/60 text-sm mt-1">I'm just a message away from starting our next project.</p>
+            <p className="text-secondary/60 text-sm mt-1">
+              I'm just a message away from starting our next project.
+            </p>
           </div>
           <motion.a
             href="#contact"
