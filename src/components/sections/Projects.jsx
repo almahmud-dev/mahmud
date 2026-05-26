@@ -4,10 +4,10 @@ import Container from "@/src/components/ui/Container";
 import SectionHeader from "@/src/components/ui/SectionHeader";
 import { FaGithub } from "react-icons/fa";
 import { HiArrowUpRight } from "react-icons/hi2";
-import { projects } from "@/src/data/projectsData";
+import { projects } from "@/src/data/ProjectsData";
 import { motion, AnimatePresence } from "framer-motion";
 
-const filters = ["All", "Client Work", "Frontend", "Fullstack", "Tailwind", "React", "Next.js", "Node", "MongoDB"];
+const filters = ["All", "Client Work", "Frontend", "Tailwind", "React", "Next.js","TypeScript"];
 
 const getStatusStyle = (status) => {
   switch (status) {
@@ -50,7 +50,7 @@ const Projects = () => {
       <Container>
         <div className="text-center mb-12">
           <SectionHeader text="My Projects" colorWord="Projects" />
-          <p className="text-secondary/60 sm:text-base text-sm">Filter by category or tech stack</p>
+          <p className="text-secondary/80 sm:text-[18px] text-sm">Filter by category or tech stack</p>
         </div>
 
         <motion.div
@@ -108,7 +108,7 @@ const Projects = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
             >
               {visibleProjects.map((project, i) => (
                 <motion.div
