@@ -83,7 +83,8 @@ export default function Hero() {
             alt={personal.fullName}
             onLoad={() => setImgLoaded(true)}
             fill
-            className={`dark:brightness-75 duration-300 object-cover rounded sm:rounded-xl transition-opacity ${
+            sizes="(max-width: 480px) 200px, (max-width: 640px) 240px, (max-width: 768px) 312px, (max-width: 1024px) 280px, (max-width: 1280px) 288px, 384px"
+            className={`dark:brightness-85 duration-300 object-cover rounded sm:rounded-xl transition-opacity ${
               imgLoaded ? "opacity-100" : "opacity-0"
             }`}
           />

@@ -5,6 +5,7 @@ import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { personal } from "@/src/data/personal";
 import MagneticButton from "../ui/MagneticButton";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -149,13 +150,16 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative overflow-hidden hidden lg:block outline outline-[1.5px] outline-accent dark:outline-[#39ff6a] group"
+            className="relative overflow-hidden outline outline-[1.5px] outline-accent dark:outline-[#39ff6a] group min-h-[580px]"
           >
             <div className="absolute inset-0 bg-accent/5 dark:bg-[#39ff6a]/5 mix-blend-overlay z-10 pointer-events-none" />
-            <img
+            <Image
               src="/image/image.jpg"
               alt={personal.fullName}
-              className="w-full h-full object-cover transition duration-700 scale-105 group-hover:scale-100 dark:brightness-75"
+              fill
+              sizes="33vw"
+              className="object-cover object-top transition duration-700 scale-105 group-hover:scale-100 dark:brightness-75"
+              priority
             />
             {/* Available badge */}
             <div className="absolute bottom-4 right-4 z-20">
