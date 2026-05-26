@@ -4,7 +4,7 @@ import Container from "@/src/components/ui/Container";
 import SectionHeader from "@/src/components/ui/SectionHeader";
 import { FaGithub } from "react-icons/fa";
 import { HiArrowUpRight } from "react-icons/hi2";
-import { projects } from "@/src/data/ProjectsData";
+import { projects } from "@/src/data/projectsData";
 import { motion, AnimatePresence } from "framer-motion";
 
 const filters = ["All", "Client Work", "Frontend", "Tailwind", "React", "Next.js","TypeScript"];

@@ -73,7 +73,7 @@ const ZustandIcon = () => (
 
 export const projects = [
   {
-    title: "Uomo UI",
+    title: "Uomo UI Ecommerce",
     image: "/image/uomo.png",
     live: "https://uomo-uim.vercel.app/",
     github: "https://github.com/almahmud-dev/uomo-uim",
@@ -132,15 +132,15 @@ export const projects = [
       { name: "Tailwind", icon: <SiTailwindcss /> },
     ],
   },
-  {
-    title: "Air Assistant",
-    image: "/image/airassistant.png",
-    live: "https://airbnb-assistant-landing.vercel.app/",
-    github: "",
-    category: "Client Work",
-    types: ["Client Work", "Frontend", "Tailwind", "Next.js"],
-    status: "Contributed",
-    description: "Contributed to the homepage UI of a multi-page client website. Worked on initial implementation and UI fixes before final deployment.",
+   {
+    title: "3D Portfolio",
+    image: "/image/3DPortfolio.png",
+    live: "https://3-d-website-olive.vercel.app/",
+    github: "https://github.com/almahmud-dev/3D_Website",
+    category: "TypeScript",
+    types: ["TypeScript", "Tailwind", "Next.js"],
+    status: "Improving",
+    description: "Three.js 3D Scene A real-time 3D environment with a glowing sphere, orbital rings, particle systems, and a star field. Built with pure Three.js showcasing advanced geometry, lighting, and scene management.",
     tech: [
       { name: "React", icon: <SiReact /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
@@ -177,7 +177,7 @@ export const projects = [
     ],
   },
   {
-    title: "EBT Eduact",
+    title: "EBT Eduact Ecommerce",
     image: "/image/eduact.png",
     live: "https://ebt-eduact.vercel.app/",
     github: "https://github.com/almahmud-dev/ebt-eduact",
@@ -190,20 +190,7 @@ export const projects = [
       { name: "Tailwind", icon: <SiTailwindcss /> },
     ],
   },
-  {
-    title: "3D Portfolio",
-    image: "/image/3DPortfolio.png",
-    live: "https://3-d-website-olive.vercel.app/",
-    github: "https://github.com/almahmud-dev/3D_Website",
-    category: "TypeScript",
-    types: ["TypeScript", "Tailwind", "Next.js"],
-    status: "Improving",
-    description: "Three.js 3D Scene A real-time 3D environment with a glowing sphere, orbital rings, particle systems, and a star field. Built with pure Three.js showcasing advanced geometry, lighting, and scene management.",
-    tech: [
-      { name: "React", icon: <SiReact /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
-    ],
-  },
+ 
   {
     title: "SWE Domain",
     image: "/image/sweDomain.png",
@@ -213,6 +200,20 @@ export const projects = [
     types: ["Animation", "Tailwind", "Next.js"],
     status: "Improving",
     description: "A fast and simple domain registration platform built for Bangladeshi developers and businesses. Search, claim, and register your .swe.bd domain in seconds powered by Next.js and Framer Motion",
+    tech: [
+      { name: "React", icon: <SiReact /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+    ],
+  },
+   {
+    title: "Air Assistant",
+    image: "/image/airassistant.png",
+    live: "https://airbnb-assistant-landing.vercel.app/",
+    github: "",
+    category: "Client Work",
+    types: ["Client Work", "Frontend", "Tailwind", "Next.js"],
+    status: "Contributed",
+    description: "Contributed to the homepage UI of a multi-page client website. Worked on initial implementation and UI fixes before final deployment.",
     tech: [
       { name: "React", icon: <SiReact /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
