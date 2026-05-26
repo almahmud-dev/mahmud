@@ -2,8 +2,10 @@ import {
   FaNodeJs, FaReact,
 } from "react-icons/fa6";
 import {
-  SiNextdotjs, SiTailwindcss, SiRedux, SiGsap, SiMongodb, SiReact,
+  SiNextdotjs, SiTailwindcss, SiRedux, SiGsap, SiReact, SiFirebase, SiCloudinary, SiVercel, SiTypescript, SiReactquery ,
+  SiThreedotjs,
 } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 // Custom Lenis icon
 const LenisIcon = (props) => (
@@ -79,13 +81,13 @@ export const projects = [
     github: "https://github.com/almahmud-dev/uomo-uim",
     category: "Frontend",
     types: ["Frontend", "Tailwind", "Next.js",],
-    status: "In Progress",
+    status: "Completed",
     description: "A modern e-commerce platform with smooth UI, product browsing and structured layout for better user experience.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
-      { name: "Firebase", icon: <SiTailwindcss /> },
-      { name: "Firebase", icon: <SiTailwindcss /> },
+      { name: "Firebase", icon: <SiFirebase  /> },
+      { name: "Cloudinary", icon: <SiCloudinary /> },
     ],
   },
   {
@@ -101,6 +103,7 @@ export const projects = [
       { name: "React", icon: <SiReact /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
       { name: "Zustand", icon: <ZustandIcon /> },
+      { name: "Lenis", icon: <LenisIcon /> },
     ],
   },
   {
@@ -128,8 +131,10 @@ export const projects = [
     status: "Completed",
     description: "Contributed to the homepage UI of a multi-page client website. Worked on initial implementation and UI fixes before final deployment.",
     tech: [
-      { name: "React", icon: <SiReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Tanstack", icon: <TbBrandReactNative  /> },
+      { name: "Vercel", icon: <SiVercel   /> },
     ],
   },
    {
@@ -142,8 +147,10 @@ export const projects = [
     status: "Improving",
     description: "Three.js 3D Scene A real-time 3D environment with a glowing sphere, orbital rings, particle systems, and a star field. Built with pure Three.js showcasing advanced geometry, lighting, and scene management.",
     tech: [
-      { name: "React", icon: <SiReact /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "GSAP", icon: <SiGsap /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
     ],
   },
   {
@@ -177,21 +184,6 @@ export const projects = [
     ],
   },
   {
-    title: "EBT Eduact Ecommerce",
-    image: "/image/eduact.png",
-    live: "https://ebt-eduact.vercel.app/",
-    github: "https://github.com/almahmud-dev/ebt-eduact",
-    category: "Frontend",
-    types: ["Frontend", "Tailwind", "React"],
-    status: "Improving",
-    description: "Educational platform UI with multiple sections and structured content for better learning experience.",
-    tech: [
-      { name: "React", icon: <SiReact /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
-    ],
-  },
- 
-  {
     title: "SWE Domain",
     image: "/image/sweDomain.png",
     live: "https://nextjs-landingpage-lyart.vercel.app/",
@@ -201,8 +193,9 @@ export const projects = [
     status: "Improving",
     description: "A fast and simple domain registration platform built for Bangladeshi developers and businesses. Search, claim, and register your .swe.bd domain in seconds powered by Next.js and Framer Motion",
     tech: [
-      { name: "React", icon: <SiReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Tanstack", icon: <TbBrandReactNative /> },
     ],
   },
    {
@@ -215,8 +208,25 @@ export const projects = [
     status: "Contributed",
     description: "Contributed to the homepage UI of a multi-page client website. Worked on initial implementation and UI fixes before final deployment.",
     tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Tanstack", icon: <TbBrandReactNative /> },
+    ],
+  },
+  {
+    title: "EBT Eduact Ecommerce",
+    image: "/image/eduact.png",
+    live: "https://ebt-eduact.vercel.app/",
+    github: "https://github.com/almahmud-dev/ebt-eduact",
+    category: "Frontend",
+    types: ["Frontend", "Tailwind", "React"],
+    status: "Improving",
+    description: "Educational platform UI with multiple sections and structured content for better learning experience.",
+    tech: [
       { name: "React", icon: <SiReact /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Lenis", icon: <LenisIcon /> },
+      { name: "Tanstack", icon: <TbBrandReactNative /> },
     ],
   },
 ];
