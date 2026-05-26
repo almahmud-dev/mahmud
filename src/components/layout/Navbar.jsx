@@ -162,12 +162,12 @@ export default function Navbar() {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3 px-4 pt-1">
+        <div className="flex items-center gap-3 px-4">
           <MagneticButton
             href="#contact"
             fillColor="#F5F0E8"
             textHoverColor="#000000"
-            className="hidden lg:block self-start px-7 py-4.5 bg-lime-400 text-black text-xs font-bold tracking-widest rounded-sm"
+            className="hidden lg:block self-start px-7 py-4 bg-lime-400 text-black text-xs font-bold tracking-widest rounded-sm"
           >
             LET'S TALK
             <svg

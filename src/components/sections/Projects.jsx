@@ -89,7 +89,7 @@ const Projects = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleFilterChange(f)}
-              className={`relative px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold border transition-all duration-300
+              className={`relative px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-[25px] text-xs sm:text-sm font-semibold border transition-all duration-300
                 ${
                   active === f
                     ? "bg-accent text-white border-accent shadow-lg shadow-accent/25"
