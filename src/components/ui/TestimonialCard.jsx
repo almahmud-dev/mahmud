@@ -145,8 +145,9 @@ export default function TestimonialCard({ item, index }) {
               <Image
                 src={item.avatar}
                 alt={item.name}
-                fill
-                className="object-cover"
+                width={64}
+                height={64}
+                className="object-cover rounded-full"
               />
             </div>
 
