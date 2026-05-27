@@ -1,85 +1,90 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "next-themes";
 
+// ✅ Mobile detect — resize event ছাড়াই, একবার check করে শেষ
+const checkMobile = () =>
+  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
 export default function ParticlesBackground() {
   const [init, setInit] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const { resolvedTheme } = useTheme();
-  const [accent, setAccent] = useState("");
+  const accentRef = useRef("");
+  const isMobileRef = useRef(false);
 
   useEffect(() => {
+    // ✅ Mobile একবার check — resize listener নেই
+    isMobileRef.current = checkMobile();
+
+    // ✅ Mobile এ particles একদম বন্ধ — init ই করো না
+    if (isMobileRef.current) return;
+
     const initParticles = async () => {
       await loadSlim(window.tsParticles);
       setInit(true);
     };
     initParticles();
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
     const updateAccent = () => {
-      const color = getComputedStyle(document.documentElement)
+      accentRef.current = getComputedStyle(document.documentElement)
         .getPropertyValue("--color-accent")
         .trim();
-      setAccent(color);
     };
     updateAccent();
+
     window.addEventListener("accent-change", updateAccent);
-    return () => {
-      window.removeEventListener("accent-change", updateAccent);
-    };
+    return () => window.removeEventListener("accent-change", updateAccent);
   }, []);
 
+  // ✅ Mobile এ কিছুই render করো না
+  if (isMobileRef.current) return null;
   if (!init) return null;
+
   const isDark = resolvedTheme === "dark";
 
   return (
     <Particles
-      key={accent}
+      // ✅ key={accent} বাদ — accent বদলালে পুরো component destroy হত
+      // accent change handle করতে চাইলে tsParticles.setConfig() API ব্যবহার করো
       className="fixed inset-0 -z-10"
       id="tsparticles"
       options={{
         fullScreen: { enable: false },
         background: { color: "transparent" },
+        // ✅ Desktop এ 60fps যথেষ্ট
         fpsLimit: 60,
         particles: {
           number: {
-            value: isMobile ? 30 : 150,
+            // ✅ Mobile এ আসাই হবে না, Desktop এ 80 যথেষ্ট (আগে 150 ছিল)
+            value: 80,
             density: {
-              enable: !isMobile,
+              enable: true,
               value_area: 800,
             },
           },
-
           color: {
-            value: accent,
+            // ✅ accentRef.current ব্যবহার — state নয়, re-render নেই
+            value: accentRef.current || "#39ff6a",
           },
-
           links: {
             enable: true,
             color: isDark ? "#ffffffaa" : "#000000aa",
             opacity: 0.3,
           },
-
           move: {
             enable: true,
-            speed: isMobile ? 0.5 : 0.8, // 🔥 smoother
+            speed: 0.8,
           },
-
           size: {
-            value: isMobile ? 1.2 : 2,
+            value: 2,
           },
-
           opacity: {
             value: 0.6,
           },
@@ -87,7 +92,7 @@ export default function ParticlesBackground() {
         interactivity: {
           events: {
             onHover: {
-              enable: !isMobile,
+              enable: true,
               mode: "grab",
             },
           },
@@ -98,6 +103,8 @@ export default function ParticlesBackground() {
             },
           },
         },
+        // ✅ detectRetina বন্ধ — retina screen এ 2x particles render করত
+        detectRetina: false,
       }}
     />
   );

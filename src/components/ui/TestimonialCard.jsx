@@ -105,8 +105,8 @@ export default function TestimonialCard({ item, index }) {
           flex-1
           text-[15px]
           leading-8
-          text-black/70
-          dark:text-white/70
+          text-black/80
+          dark:text-white/80
           line-clamp-8 
         "
         >
