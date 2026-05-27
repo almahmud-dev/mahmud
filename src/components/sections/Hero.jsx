@@ -52,6 +52,7 @@ export default function Hero() {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
+        delay: 0.1,
         defaults: { ease: "power3.out", force3D: true },
         onComplete() {
           // animation shesh - willChange ar dorkar nai, GPU memory free koro
@@ -65,8 +66,8 @@ export default function Hero() {
 
       // photo fade + scale
       tl.fromTo(photoRef.current,
-        { opacity: 0, scale: 1.06 },
-        { opacity: 1, scale: 1, duration: 0.9 }
+        { opacity: 0.3, scale: 1.06 },
+        { opacity: 1, scale: 1, duration: 0.7 }
       )
       // name er letter gula ekta stagger tween e - alada alada animation na
       .fromTo(letters,
@@ -158,7 +159,7 @@ export default function Hero() {
               <span
                 key={i}
                 ref={(el) => { if (el) lettersRef.current[i] = el; }}
-                style={{ display: "inline-block", opacity: 0 }}
+                style={{ display: "inline-block", opacity: 0.01 }}
               >
                 {letter}
               </span>
@@ -170,7 +171,7 @@ export default function Hero() {
       <Container className="p-5 sm:p-0 font-audiowide">
 
         {/* ekta ref e mobile + desktop duto layout - alada alada animate na */}
-        <div ref={rolesRef} style={{ opacity: 0 }}>
+        <div ref={rolesRef} style={{ opacity: 0.3 }}>
           <div className="flex lg:hidden items-center justify-between">
             {professionMobile.map((p, i) => (
               <div key={i} className="flex items-center gap-1 sm:gap-2">
