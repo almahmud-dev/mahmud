@@ -108,7 +108,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="py-10 sm:py-20 lg:py-30 relative">
+    <section id="hero" className="py-10 sm:py-20 lg:py-30 relative overflow-x-hidden">
       <div className="relative py-26 xs:py-30 md:py-20 xl:py-15 2xl:py-18">
 
         <div
@@ -150,7 +150,7 @@ export default function Hero() {
         {/* overflow-hidden rakha hoyeche - letter y:120 theke ashar time scroll bar na ashe */}
         <h1
           data-heading={name}
-          className="relative uppercase text-center mx-auto w-fit font-black italic font-audiowide select-none text-black dark:text-white overflow-hidden"
+          className="relative uppercase text-center mx-auto w-fit font-black italic font-audiowide select-none text-black dark:text-white"
           style={{ fontSize: "clamp(60px, 17vw, 280px)" }}
         >
           <span className="flex justify-center">
