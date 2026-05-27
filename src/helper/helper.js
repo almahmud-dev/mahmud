@@ -24,7 +24,8 @@ export const socials = [
   },
 ];
 
-// ─── Skills data: featured (daily drivers) ar secondary (toolkit)
+// ============ Skills data ==============
+// featured (daily drivers) ar secondary (toolkit)
 import { FaJs, FaReact, FaGitAlt, FaFigma } from "react-icons/fa6";
 import {
   SiTailwindcss,
@@ -118,7 +119,8 @@ export const secondary = [
   { name: "AI Tools", icon: <SiOpenai />, color: null },
   { name: "Prompt Eng", icon: <MdOutlineSmartToy />, color: "#f59e0b" },
 ];
-// Testimonaials Section
+
+// ============ Testimonaials Section ============
 const testimonials1 =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial1_c4x4or.png";
 const testimonials2 =
@@ -177,31 +179,35 @@ export const testimonials = [
   },
 ];
 
-// FAQ Section
+// =========== FAQ Section ============
 export const faqData = [
   {
-    question: "What technologies do you specialize in?",
+    question: "What technologies do you work with?",
     answer:
-      "I specialize in the MERN stack (MongoDB, Express, React, Node.js) along with Next.js and Tailwind CSS for building high-performance web applications. My focus is on creating scalable architectures with editorial-grade user interfaces.",
+      "I build modern, responsive, and high-performance frontend applications using React.js, Next.js, JavaScript, and TypeScript. I also work with tools like Firebase for authentication and backend services, Cloudinary for image optimization, and Tailwind CSS for building clean and responsive user interfaces. My main focus is creating smooth user experiences with mobile-first and performance-focused development.",
   },
+
   {
     question: "Do you take on freelance projects?",
     answer:
-      "Yes, I am available for freelance opportunities ranging from single-page landing pages to complex full-stack web applications. I prefer projects that challenge the status quo of digital experiences.",
+      "Yes, I’m available for freelance projects ranging from landing pages to complete frontend applications. I enjoy working on modern web experiences where performance, responsiveness, and clean UI design are important.",
   },
+
   {
     question: "How can we start a project together?",
     answer:
-      "You can reach out via the contact form or email me directly. I usually respond within 24 hours to discuss project details, technical requirements, and potential timelines.",
+      "You can contact me through the contact form or email me directly. Once I understand your project goals and requirements, we can discuss the workflow, timeline, and the best approach to bring your idea to life.",
   },
+
   {
-    question: "Are you open to full-time remote positions?",
+    question: "Are you open to full-time remote opportunities?",
     answer:
-      "Absolutely! I am always looking for exciting opportunities to contribute to innovative teams globally. I thrive in asynchronous environments that value code quality and design precision.",
+      "Yes, I’m open to full-time remote opportunities where I can contribute to modern frontend projects, collaborate with creative teams, and continue improving my skills while building meaningful user experiences.",
   },
+
   {
     question: "What is your typical project timeline?",
     answer:
-      "Timeline varies based on project complexity. A simple landing page can be done in 1–2 weeks, while a full-stack application typically takes 4–8 weeks. I always communicate clearly about timelines upfront.",
+      "Project timelines depend on the overall scope and complexity. Smaller landing pages usually take around 1–2 weeks, while larger frontend applications may take several weeks depending on features, revisions, and integrations.",
   },
 ];

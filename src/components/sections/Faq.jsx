@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { faqData } from "@/src/helper/helper";
+import MagneticButton from "../ui/MagneticButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,7 +128,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
         style={{ height: 0, opacity: 0, overflow: "hidden" }}
         className="bg-white dark:bg-[#080810]"
       >
-        <p className="px-5 sm:px-6 py-4 text-sm text-secondary leading-relaxed border-t border-black/5 dark:border-white/5">
+        <p className="px-5 sm:px-6 py-4 text-sm text-secondary leading-relaxed border-t border-black/5 dark:border-white/80">
           {item.answer}
         </p>
       </div>
@@ -266,20 +267,36 @@ export default function Faq() {
           style={{ opacity: 0 }}
         >
           <div className="text-center sm:text-left">
-            <h4 className="text-xl font-bold">Still have questions?</h4>
-            <p className="text-secondary/60 text-sm mt-1">
-              I'm just a message away from starting our next project.
+            <h4 className="text-xl font-bold">Have a project in mind?</h4>
+
+            <p className="text-secondary/80 dark:text-white/80 text-sm mt-1 max-w-md">
+              Whether it’s a modern landing page or a complete frontend
+              application, I’d love to hear about your idea and help bring it to
+              life.
             </p>
           </div>
 
-          {/* Hover/tap CSS diye — FM whileHover/whileTap er dorkar nai */}
-          <a
+          <MagneticButton
             href="#contact"
-            className="bg-accent text-white font-bold px-7 py-3.5 rounded-full text-sm hover:shadow-lg hover:shadow-accent/30 transition-all duration-200 whitespace-nowrap active:scale-95"
-            style={{ transform: "translateZ(0)" }}
+            fillColor="#F5F0E8"
+            textHoverColor="#000000"
+            className="self-start px-7 py-4.5 bg-accent text-white text-xs font-bold tracking-widest rounded-lg"
           >
-            Drop a Message →
-          </a>
+            Let’s Talk
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              className="w-4 h-4"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </MagneticButton>
         </div>
       </Container>
     </section>
