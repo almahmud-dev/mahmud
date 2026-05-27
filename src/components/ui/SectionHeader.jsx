@@ -1,6 +1,21 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+function buildST(trigger, isMobile) {
+  return {
+    trigger,
+    start: isMobile ? "top 92%" : "top 88%",
+    // Element er bottom viewport er top e pouchale reverse — mane fully ber hoye gele
+    end: "bottom top",
+    ...(isMobile
+      ? { once: true }
+      : { toggleActions: "play none none reverse" }),
+  };
+}
 
 export default function SectionHeader({
   label,
@@ -8,8 +23,9 @@ export default function SectionHeader({
   colorWord,
   className = "",
 }) {
-  let content;
+  const wrapperRef = useRef(null);
 
+  let content;
   if (colorWord) {
     const idx = text.indexOf(colorWord);
     if (idx === -1) {
@@ -40,12 +56,37 @@ export default function SectionHeader({
     );
   }
 
+  useEffect(() => {
+    const isMobile =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches;
+
+    const ctx = gsap.context(() => {
+      gsap.set(wrapperRef.current, { willChange: "transform, opacity" });
+
+      gsap.fromTo(
+        wrapperRef.current,
+        { opacity: 0, y: isMobile ? 18 : 22 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: buildST(wrapperRef.current, isMobile),
+          onComplete: isMobile
+            ? () => gsap.set(wrapperRef.current, { clearProps: "willChange,transform" })
+            : undefined,
+        }
+      );
+    }, wrapperRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      ref={wrapperRef}
       className={`relative text-center py-4 sm:py-6 mb-2 ${className}`}
     >
       <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center font-black text-accent/6 dark:text-accent/12 text-[14vw] sm:text-[10vw] lg:text-[8vw] uppercase tracking-widest pointer-events-none select-none whitespace-nowrap overflow-hidden">
@@ -57,6 +98,6 @@ export default function SectionHeader({
       <h2 className="relative z-10 text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide capitalize">
         {content}
       </h2>
-    </motion.div>
+    </div>
   );
 }

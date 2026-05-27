@@ -1,3 +1,28 @@
+import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
+export const heroImage =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
+
+export const socials = [
+  {
+    key: "instagram",
+    label: "Instagram",
+    Icon: FaInstagram,
+    href: (p) => p.social?.instagram || "#",
+  },
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    Icon: FaLinkedinIn,
+    href: (p) => p.social?.linkedin || "#",
+  },
+  {
+    key: "github",
+    label: "GitHub",
+    Icon: FaGithub,
+    href: (p) => p.social?.github || "#",
+  },
+];
+// Testimonaials Section
 const testimonials1 =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial1_c4x4or.png";
 const testimonials2 =
