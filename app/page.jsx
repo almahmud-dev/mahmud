@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 import Hero from "@/src/components/sections/Hero";
 import About from "@/src/components/sections/About";
+import ExperienceTimeline from "@/src/components/sections/ExperienceTimeline";
 
 const Skills = dynamic(() => import("@/src/components/sections/Skills"));
 const Projects = dynamic(() => import("@/src/components/sections/Projects"));
@@ -17,6 +18,7 @@ export default function Page() {
       <About />
       <Skills />
       <Projects />
+      <ExperienceTimeline/>
       <Testimonials />
       <Faq />
       <Contact />
