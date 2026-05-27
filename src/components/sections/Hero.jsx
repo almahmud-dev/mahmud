@@ -3,13 +3,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Container from "@/src/components/ui/Container";
-import imgPlace from "@/public/image/image.jpg";
 import Image from "next/image";
 import { personal } from "@/src/data/personal";
 import MagneticButton from "../ui/MagneticButton";
 
 const name = personal.firstName.toLowerCase();
-
+const heroImage =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
 const profession = [
   "Frontend Developer",
   "Performance & Animation",
@@ -122,9 +122,8 @@ export default function Hero() {
             w-50 xs:w-60 sm:w-78 md:w-70 lg:w-72 xl:w-80 2xl:w-96"
         >
           <Image
-            src={imgPlace}
+            src={heroImage}
             priority
-            placeholder="blur"
             alt={personal.fullName}
             fill
             sizes="(max-width: 480px) 200px, (max-width: 640px) 240px,

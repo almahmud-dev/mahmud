@@ -7,6 +7,8 @@ import { personal } from "@/src/data/personal";
 import MagneticButton from "../ui/MagneticButton";
 import Image from "next/image";
 
+const heroImage =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 0) => ({
@@ -154,7 +156,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-accent/5 dark:bg-[#39ff6a]/5 mix-blend-overlay z-10 pointer-events-none" />
             <Image
-              src="/image/image.jpg"
+              src={heroImage}
               alt={personal.fullName}
               fill
               sizes="33vw"
