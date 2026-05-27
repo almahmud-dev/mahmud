@@ -75,9 +75,12 @@ export default function SectionHeader({
           force3D: true,
           scrollTrigger: buildST(wrapperRef.current, isMobile),
           onComplete: isMobile
-            ? () => gsap.set(wrapperRef.current, { clearProps: "willChange,transform" })
+            ? () =>
+                gsap.set(wrapperRef.current, {
+                  clearProps: "willChange,transform",
+                })
             : undefined,
-        }
+        },
       );
     }, wrapperRef);
 
@@ -89,7 +92,7 @@ export default function SectionHeader({
       ref={wrapperRef}
       className={`relative text-center py-4 sm:py-6 mb-2 ${className}`}
     >
-      <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center font-black text-accent/6 dark:text-accent/12 text-[14vw] sm:text-[10vw] lg:text-[8vw] uppercase tracking-widest pointer-events-none select-none whitespace-nowrap overflow-hidden">
+      <span className="absolute inset-x-0 top-[40%] -translate-y-1/2 flex items-center justify-center font-black text-accent/6 dark:text-accent/12 text-[14vw] sm:text-[10vw] lg:text-[8vw] uppercase tracking-widest pointer-events-none select-none whitespace-nowrap overflow-hidden">
         {text}
       </span>
       <p className="relative z-10 mb-4 text-[18px] font-bold uppercase tracking-[4px] text-red-500 dark:text-[#39ff6a]">

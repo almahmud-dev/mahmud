@@ -176,3 +176,32 @@ export const testimonials = [
     text: "Professional, reliable, and highly detail-oriented. He approached every task carefully and delivered a frontend experience that felt both modern and user-friendly.",
   },
 ];
+
+// FAQ Section
+export const faqData = [
+  {
+    question: "What technologies do you specialize in?",
+    answer:
+      "I specialize in the MERN stack (MongoDB, Express, React, Node.js) along with Next.js and Tailwind CSS for building high-performance web applications. My focus is on creating scalable architectures with editorial-grade user interfaces.",
+  },
+  {
+    question: "Do you take on freelance projects?",
+    answer:
+      "Yes, I am available for freelance opportunities ranging from single-page landing pages to complex full-stack web applications. I prefer projects that challenge the status quo of digital experiences.",
+  },
+  {
+    question: "How can we start a project together?",
+    answer:
+      "You can reach out via the contact form or email me directly. I usually respond within 24 hours to discuss project details, technical requirements, and potential timelines.",
+  },
+  {
+    question: "Are you open to full-time remote positions?",
+    answer:
+      "Absolutely! I am always looking for exciting opportunities to contribute to innovative teams globally. I thrive in asynchronous environments that value code quality and design precision.",
+  },
+  {
+    question: "What is your typical project timeline?",
+    answer:
+      "Timeline varies based on project complexity. A simple landing page can be done in 1–2 weeks, while a full-stack application typically takes 4–8 weeks. I always communicate clearly about timelines upfront.",
+  },
+];

@@ -1,164 +1,269 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Container from "@/src/components/ui/Container";
 import SectionHeader from "@/src/components/ui/SectionHeader";
-import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import { faqData } from "@/src/helper/helper";
 
-const faqData = [
-  {
-    question: "What technologies do you specialize in?",
-    answer:
-      "I specialize in the MERN stack (MongoDB, Express, React, Node.js) along with Next.js and Tailwind CSS for building high-performance web applications. My focus is on creating scalable architectures with editorial-grade user interfaces.",
-  },
-  {
-    question: "Do you take on freelance projects?",
-    answer:
-      "Yes, I am available for freelance opportunities ranging from single-page landing pages to complex full-stack web applications. I prefer projects that challenge the status quo of digital experiences.",
-  },
-  {
-    question: "How can we start a project together?",
-    answer:
-      "You can reach out via the contact form or email me directly. I usually respond within 24 hours to discuss project details, technical requirements, and potential timelines.",
-  },
-  {
-    question: "Are you open to full-time remote positions?",
-    answer:
-      "Absolutely! I am always looking for exciting opportunities to contribute to innovative teams globally. I thrive in asynchronous environments that value code quality and design precision.",
-  },
-  {
-    question: "What is your typical project timeline?",
-    answer:
-      "Timeline varies based on project complexity. A simple landing page can be done in 1–2 weeks, while a full-stack application typically takes 4–8 weeks. I always communicate clearly about timelines upfront.",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
+
+// ─── Single FAQ Item
+
+function FaqItem({ item, index, isOpen, onToggle }) {
+  const bodyRef = useRef(null);
+  const tweenRef = useRef(null);
+
+  useEffect(() => {
+    const el = bodyRef.current;
+    if (!el) return;
+
+    // Chole ashle puropuri bondo kori
+    if (tweenRef.current) tweenRef.current.kill();
+
+    if (isOpen) {
+      // Height 0 set korার আগে scrollHeight store kori — nahole 0 asbe
+      const targetHeight = el.scrollHeight;
+
+      gsap.set(el, { height: 0, opacity: 0, willChange: "height, opacity" });
+
+      tweenRef.current = gsap.to(el, {
+        height: targetHeight,
+        opacity: 1,
+        duration: 0.38,
+        ease: "power3.out",
+        force3D: true,
+        onComplete: () => {
+          // Auto height — resize e content adjust hobe
+          gsap.set(el, { height: "auto", willChange: "auto" });
+        },
+      });
+    } else {
+      // Close er somoy current height theke shuru
+      gsap.set(el, { height: el.offsetHeight, willChange: "height, opacity" });
+
+      tweenRef.current = gsap.to(el, {
+        height: 0,
+        opacity: 0,
+        duration: 0.32,
+        ease: "power3.inOut",
+        force3D: true,
+        onComplete: () => {
+          gsap.set(el, { willChange: "auto" });
+        },
+      });
+    }
+
+    return () => {
+      if (tweenRef.current) tweenRef.current.kill();
+    };
+  }, [isOpen]);
+
+  return (
+    <div
+      className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
+        isOpen
+          ? "border-accent/40 shadow-sm shadow-accent/5"
+          : "border-black/8 dark:border-white/8"
+      }`}
+    >
+      {/* Accessibility er jonno aria-expanded + aria-controls */}
+      <button
+        onClick={() => onToggle(index)}
+        aria-expanded={isOpen}
+        aria-controls={`faq-answer-${index}`}
+        className={`w-full flex justify-between items-center px-5 sm:px-6 py-4 sm:py-5 text-left transition-all duration-300 ${
+          isOpen
+            ? "bg-accent/6 dark:bg-accent/10"
+            : "bg-[#f8f7ff] dark:bg-white/4 hover:bg-accent/4 dark:hover:bg-white/6"
+        }`}
+      >
+        <span
+          className={`font-semibold text-sm sm:text-base pr-4 transition-colors duration-200 ${
+            isOpen ? "text-accent" : ""
+          }`}
+        >
+          {item.question}
+        </span>
+
+        {/* Plus/Minus CSS opacity + rotate diye swap — FM lagbe na */}
+        <span
+          className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${
+            isOpen
+              ? "bg-accent text-white border-accent"
+              : "bg-transparent border-black/15 dark:border-white/15 text-secondary hover:border-accent hover:text-accent"
+          }`}
+        >
+          <span
+            style={{
+              display: "block",
+              transition: "opacity 0.2s, transform 0.2s",
+              opacity: isOpen ? 0 : 1,
+              transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+              position: "absolute",
+            }}
+          >
+            <FiPlus className="text-sm" />
+          </span>
+          <span
+            style={{
+              display: "block",
+              transition: "opacity 0.2s, transform 0.2s",
+              opacity: isOpen ? 1 : 0,
+              transform: isOpen ? "rotate(0deg)" : "rotate(-90deg)",
+            }}
+          >
+            <FiMinus className="text-sm" />
+          </span>
+        </span>
+      </button>
+
+      {/* Answer body — aria-hidden screen reader er jonno */}
+      <div
+        id={`faq-answer-${index}`}
+        ref={bodyRef}
+        aria-hidden={!isOpen}
+        style={{ height: 0, opacity: 0, overflow: "hidden" }}
+        className="bg-white dark:bg-[#080810]"
+      >
+        <p className="px-5 sm:px-6 py-4 text-sm text-secondary leading-relaxed border-t border-black/5 dark:border-white/5">
+          {item.answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main FAQ Section
 
 export default function Faq() {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggle = (i) => setActiveIndex(activeIndex === i ? null : i);
+  const listRef = useRef(null);
+  const ctaRef = useRef(null);
+  const itemRefs = useRef([]);
+
+  // useCallback — re-render e noto function create hobe na
+  const toggle = useCallback(
+    (i) => setActiveIndex((prev) => (prev === i ? null : i)),
+    [],
+  );
+
+  useEffect(() => {
+    // Mobile detect — pointer: coarse mane touch device
+    const isMobile =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches;
+
+    // SectionHeader render + paint shesh howar pore refresh
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    const list = listRef.current;
+    const cta = ctaRef.current;
+
+    // Null ref filter — unmount er age render na hole skip
+    const items = itemRefs.current.filter(Boolean);
+
+    if (!list || !cta || items.length === 0) return;
+
+    const ctx = gsap.context(() => {
+      // FAQ items — stagger diye ek er pore ek
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 64 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power3.out",
+          stagger: 0.09,
+          force3D: true,
+          willChange: "transform, opacity",
+          scrollTrigger: {
+            trigger: list,
+            start: isMobile ? "top 92%" : "top 88%",
+            once: true, // Mobile + desktop duitatei once — scroll up e re-trigger lagbe na
+          },
+          onComplete() {
+            // Animation shesh — willChange clear kori, GPU memory free
+            gsap.set(items, { willChange: "auto" });
+          },
+        },
+      );
+
+      // CTA block
+      gsap.fromTo(
+        cta,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          force3D: true,
+          willChange: "transform, opacity",
+          scrollTrigger: {
+            trigger: cta,
+            start: isMobile ? "top 95%" : "top 92%",
+            once: true,
+          },
+          onComplete() {
+            gsap.set(cta, { willChange: "auto" });
+          },
+        },
+      );
+    });
+
+    return () => {
+      clearTimeout(timer);
+      // itemRefs array cleanup — purer stale ref clear
+      itemRefs.current = [];
+      ctx.revert();
+    };
+  }, []);
 
   return (
-    <section
-      id="faq"
-      className="relative bg-white dark:bg-[#080810]"
-    >
+    <section id="faq" className="relative bg-white dark:bg-[#080810]">
+      {/* SectionHeader nijeyi animate hoy — Projects section er moto same pattern */}
+      <div className="text-center mb-12">
+        <SectionHeader text="FAQ" colorWord="FAQ" />
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Frequently Asked{" "}
+          <span className="text-accent dark:text-[#39ff6a]">Questions</span>
+        </h2>
+        <p className="text-secondary/80 text-sm max-w-md mx-auto">
+          Transparent insights into my process, technical stack, and
+          availability.
+        </p>
+      </div>
       <Container className="max-w-3xl!">
-        <SectionHeader text="FAQs" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-            Frequently Asked <span className="text-accent">Questions</span>
-          </h2>
-          <p className="text-secondary/60 text-sm max-w-md mx-auto">
-            Transparent insights into my process, technical stack, and
-            availability.
-          </p>
-        </motion.div>
-
-        <div className="space-y-3">
-          {faqData.map((item, index) => {
-            const isOpen = activeIndex === index;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.07, duration: 0.5 }}
-                className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
-                  isOpen
-                    ? "border-accent/40 shadow-sm shadow-accent/5"
-                    : "border-black/8 dark:border-white/8"
-                }`}
-              >
-                <button
-                  onClick={() => toggle(index)}
-                  className={`w-full flex justify-between items-center px-5 sm:px-6 py-4 sm:py-5 text-left transition-all duration-300 ${
-                    isOpen
-                      ? "bg-accent/6 dark:bg-accent/10"
-                      : "bg-[#f8f7ff] dark:bg-white/4 hover:bg-accent/4 dark:hover:bg-white/6"
-                  }`}
-                >
-                  <span
-                    className={`font-semibold text-sm sm:text-base pr-4 transition-colors duration-200 ${isOpen ? "text-accent" : ""}`}
-                  >
-                    {item.question}
-                  </span>
-
-                  {/* Icon toggle: + → − */}
-                  <motion.span
-                    className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${
-                      isOpen
-                        ? "bg-accent text-white border-accent"
-                        : "bg-transparent border-black/15 dark:border-white/15 text-secondary hover:border-accent hover:text-accent"
-                    }`}
-                  >
-                    <AnimatePresence mode="wait" initial={false}>
-                      {isOpen ? (
-                        <motion.span
-                          key="minus"
-                          initial={{ rotate: -90, opacity: 0 }}
-                          animate={{ rotate: 0, opacity: 1 }}
-                          exit={{ rotate: 90, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <FiMinus className="text-sm" />
-                        </motion.span>
-                      ) : (
-                        <motion.span
-                          key="plus"
-                          initial={{ rotate: 90, opacity: 0 }}
-                          animate={{ rotate: 0, opacity: 1 }}
-                          exit={{ rotate: -90, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <FiPlus className="text-sm" />
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                  </motion.span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden bg-white dark:bg-[#080810]"
-                    >
-                      <motion.p
-                        initial={{ y: -10 }}
-                        animate={{ y: 0 }}
-                        exit={{ y: -10 }}
-                        transition={{ duration: 0.3 }}
-                        className="px-5 sm:px-6 py-4 text-sm text-secondary leading-relaxed border-t border-black/5 dark:border-white/5"
-                      >
-                        {item.answer}
-                      </motion.p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+        {/* FAQ list — ref diye ScrollTrigger trigger point */}
+        <div ref={listRef} className="space-y-3">
+          {faqData.map((item, index) => (
+            // ref callback — itemRefs array te directly store
+            <div
+              key={index}
+              ref={(el) => (itemRefs.current[index] = el)}
+              style={{ opacity: 0 }}
+            >
+              <FaqItem
+                item={item}
+                index={index}
+                isOpen={activeIndex === index}
+                onToggle={toggle}
+              />
+            </div>
+          ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.35, duration: 0.6 }}
+        <div
+          ref={ctaRef}
           className="mt-12 py-7 px-6 sm:px-10 rounded-2xl bg-accent/6 dark:bg-accent/10 border border-accent/20 flex flex-col sm:flex-row items-center justify-between gap-5"
+          style={{ opacity: 0 }}
         >
           <div className="text-center sm:text-left">
             <h4 className="text-xl font-bold">Still have questions?</h4>
@@ -166,15 +271,16 @@ export default function Faq() {
               I'm just a message away from starting our next project.
             </p>
           </div>
-          <motion.a
+
+          {/* Hover/tap CSS diye — FM whileHover/whileTap er dorkar nai */}
+          <a
             href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="bg-accent text-white font-bold px-7 py-3.5 rounded-full text-sm hover:shadow-lg hover:shadow-accent/30 transition-shadow whitespace-nowrap"
+            className="bg-accent text-white font-bold px-7 py-3.5 rounded-full text-sm hover:shadow-lg hover:shadow-accent/30 transition-all duration-200 whitespace-nowrap active:scale-95"
+            style={{ transform: "translateZ(0)" }}
           >
             Drop a Message →
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </Container>
     </section>
   );
