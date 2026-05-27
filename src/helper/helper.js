@@ -1,13 +1,13 @@
-const testimonials1 = 
-"https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial1_c4x4or.png";
-const testimonials2 = 
-"https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial2_v4lkpf.png";
-const testimonials3 = 
-"https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868911/testimonial3_noswlr.png";
-const testimonials4 = 
-"https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868913/testimonial4_hhcj9y.png";
-const testimonials5 = 
-"https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868927/testimonial5_hxzdfp.png";
+const testimonials1 =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial1_c4x4or.png";
+const testimonials2 =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial2_v4lkpf.png";
+const testimonials3 =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868911/testimonial3_noswlr.png";
+const testimonials4 =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868913/testimonial4_hhcj9y.png";
+const testimonials5 =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868927/testimonial5_hxzdfp.png";
 export const testimonials = [
   {
     id: 1,

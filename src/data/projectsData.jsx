@@ -12,23 +12,23 @@ import {
 import { TbBrandReactNative } from "react-icons/tb";
 const uomo =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868781/uomo_l3ykar.png";
-  const bazardor =
+const bazardor =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868664/bazardor_tgdamm.png";
-  const audira =
+const audira =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868663/audira_qdqxki.jpg";
-  const bitox =
+const bitox =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868668/bitox_j8xlab.jpg";
-  const threeDProject =
+const threeDProject =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868663/3DPortfolio_jlzy6i.png";
-  const hkestate =
+const hkestate =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868817/hkestate_zfl0h1.jpg";
-  const velvetpour =
+const velvetpour =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868779/velvetpour_leyjel.png";
-  const sweDomain =
+const sweDomain =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868769/sweDomain_pmboaz.png";
-  const airAssistant =
+const airAssistant =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868662/airassistant_r82gt3.png";
-  const eduact =
+const eduact =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868816/eduact_kllduz.png";
 // Custom Lenis icon
 const LenisIcon = (props) => (
