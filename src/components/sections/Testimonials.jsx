@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi2";
@@ -12,6 +13,42 @@ import TestimonialCard from "../ui/TestimonialCard";
 import { testimonials } from "@/src/helper/helper";
 
 export default function Testimonials() {
+  // Har render e notu object create hoy — Swiper re-init triggor kore
+  // useMemo diye same reference rakha hocche
+  const autoplayConfig = useMemo(
+    () => ({
+      delay: 3500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    }),
+    [], // kono dependency nei — ekbar e bane
+  );
+
+  const navigationConfig = useMemo(
+    () => ({
+      nextEl: ".testimonial-next",
+      prevEl: ".testimonial-prev",
+    }),
+    [],
+  );
+
+  const paginationConfig = useMemo(
+    () => ({
+      clickable: true,
+      el: ".testimonial-pagination",
+    }),
+    [],
+  );
+
+  const breakpointsConfig = useMemo(
+    () => ({
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1280: { slidesPerView: 3 },
+    }),
+    [],
+  );
+
   return (
     <section
       id="testimonials"
@@ -56,6 +93,7 @@ export default function Testimonials() {
           text="What Clients Say About Me"
           colorWord="Say About Me"
         />
+
         {/* Sub Text */}
         <p
           className="
@@ -71,7 +109,7 @@ export default function Testimonials() {
           sm:text-lg
         "
         >
-          Real feedback from people I’ve worked with on frontend projects,
+          Real feedback from people I've worked with on frontend projects,
           modern interfaces, and premium web experiences.
         </p>
 
@@ -83,32 +121,10 @@ export default function Testimonials() {
             speed={1200}
             grabCursor={true}
             spaceBetween={24}
-            navigation={{
-              nextEl: ".testimonial-next",
-              prevEl: ".testimonial-prev",
-            }}
-            pagination={{
-              clickable: true,
-              el: ".testimonial-pagination",
-            }}
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-              },
-
-              768: {
-                slidesPerView: 2,
-              },
-
-              1280: {
-                slidesPerView: 3,
-              },
-            }}
+            navigation={navigationConfig}
+            pagination={paginationConfig}
+            autoplay={autoplayConfig}
+            breakpoints={breakpointsConfig}
             className="w-full !py-4"
           >
             {testimonials.map((item, index) => (

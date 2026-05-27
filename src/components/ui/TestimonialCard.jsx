@@ -1,9 +1,8 @@
 "use client";
 
+import { useMemo } from "react";
 import Image from "next/image";
-
 import { FaStar } from "react-icons/fa6";
-
 import {
   RiFacebookFill,
   RiLinkedinFill,
@@ -12,6 +11,7 @@ import {
   RiDribbbleFill,
 } from "react-icons/ri";
 
+// Component er baaire — module level e ekbar create hoy, bar bar noy
 const socialIcons = [
   RiLinkedinFill,
   RiFacebookFill,
@@ -22,6 +22,12 @@ const socialIcons = [
 
 export default function TestimonialCard({ item, index }) {
   const Icon = socialIcons[index % socialIcons.length];
+
+  // Protic render e notu Array.from() avoid kora hocche
+  const stars = useMemo(
+    () => Array.from({ length: item.rating }),
+    [item.rating],
+  );
 
   return (
     <article
@@ -57,7 +63,6 @@ export default function TestimonialCard({ item, index }) {
       "
       >
         <div className="absolute inset-0 rounded-[32px] border border-orange-500/30" />
-
         <div
           className="
           absolute
@@ -91,9 +96,8 @@ export default function TestimonialCard({ item, index }) {
           </svg>
 
           <div className="flex items-center gap-1 text-orange-400">
-            {Array.from({
-              length: item.rating,
-            }).map((_, i) => (
+            {/* useMemo theke cached stars array use kora hocche */}
+            {stars.map((_, i) => (
               <FaStar key={i} className="text-sm" />
             ))}
           </div>
@@ -148,6 +152,10 @@ export default function TestimonialCard({ item, index }) {
                 width={64}
                 height={64}
                 className="object-cover rounded-full"
+                // Viewport e first few card visible thakle priority dewa uchit
+                // Baakigulo lazy load e thakbe (default)
+                loading={index < 2 ? "eager" : "lazy"}
+                // Local image hওয়ায় sizes dite hobe না — Next.js নিজেই optimize করবে
               />
             </div>
 
@@ -163,7 +171,6 @@ export default function TestimonialCard({ item, index }) {
               >
                 {item.name}
               </h3>
-
               <p
                 className="
                 mt-1
