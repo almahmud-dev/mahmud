@@ -1,10 +1,15 @@
 import React from "react";
 import Container from "../ui/Container";
 import SectionHeader from "../ui/SectionHeader";
+import Image from "next/image";
 
 export default function ExperienceTimeline() {
+  const images = ["/image/work1.png", "/image/info.png", "/image/inter.png"];
   return (
-    <section className="relative py-28 overflow-hidden bg-[#f7f7fb] dark:bg-[#080810]">
+    <section
+      id="experience"
+      className="relative py-28 overflow-hidden bg-[#f7f7fb] dark:bg-[#080810]"
+    >
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -61,7 +66,7 @@ export default function ExperienceTimeline() {
                     </div>
 
                     <h4 className="text-accent font-bold mt-3 text-lg">
-                      Creative IT Institute <br/>
+                      Creative IT Institute <br />
                       <span className="text-secondary">Dhaka, Bangladesh</span>
                     </h4>
 
@@ -73,11 +78,15 @@ export default function ExperienceTimeline() {
 
                     <p className="text-secondary leading-[1.9] mt-6">
                       Worked on real-world frontend projects using React.js,
-                      Next.js, Tailwind CSS, JavaScript, and TypeScript. Focused
-                      on building responsive user interfaces, reusable
-                      components, Firebase authentication, Cloudinary image
-                      optimization, and performance-focused frontend
-                      experiences.
+                      Next.js, Tailwind CSS, JavaScript, and TypeScript,
+                      focusing on responsive user interfaces and reusable
+                      component architecture. Gained practical experience with
+                      Firebase authentication, Cloudinary image optimization,
+                      Git & GitHub version control, and collaborative team
+                      workflows. Also worked with WordPress (CMS), domain &
+                      hosting management, and client communication while
+                      continuously learning new technologies through
+                      documentation and hands-on problem solving.
                     </p>
 
                     {/* Responsibilities */}
@@ -88,16 +97,19 @@ export default function ExperienceTimeline() {
 
                       <div className="space-y-3">
                         {[
-                          "Built responsive and reusable UI components",
-                          "Integrated Firebase authentication systems",
-                          "Optimized images and assets using Cloudinary",
-                          "Focused on mobile-first and performance-driven development",
+                          "Developed scalable and reusable frontend components for production-level applications",
+                          "Collaborated with teams using Git & GitHub workflows, pull requests, and version control practices",
+                          "Implemented secure Firebase authentication and optimized application performance across devices",
+                          "Managed Cloudinary-based image optimization for faster loading and better user experience",
+                          "Worked with WordPress CMS, domain configuration, and hosting deployment environments",
+                          "Handled client requirements, project revisions, and real-world frontend problem solving",
+                          "Followed modern development practices by reading documentation and adapting to new technologies quickly",
                         ].map((item, i) => (
                           <div
                             key={i}
-                            className="flex items-center gap-3 text-secondary"
+                            className="flex items-start gap-3 text-secondary leading-relaxed"
                           >
-                            <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                             <span>{item}</span>
                           </div>
                         ))}
@@ -106,14 +118,21 @@ export default function ExperienceTimeline() {
                   </div>
 
                   {/* Right Image */}
-                  <div className="lg:w-[320px]">
-                    <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                      <img
-                        src="/your-internship-image.jpg"
-                        alt="Internship"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                  <div className="lg:w-[320px] flex flex-col gap-5">
+                    {images.map((img, i) => (
+                      <div
+                        key={i}
+                        className="rounded-lg overflow-hidden border border-white/10 shadow-2xl"
+                      >
+                        <Image
+                          src={img}
+                          alt={`Internship Work ${i + 1}`}
+                          width={500}
+                          height={300}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -128,17 +147,17 @@ export default function ExperienceTimeline() {
                       {
                         title: "Learning Management System",
                         tech: "React.js • Tailwind CSS",
-                        img: "/project1.jpg",
+                        img: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868816/eduact_kllduz.png",
                       },
                       {
                         title: "Institute Website Redesign",
                         tech: "Next.js • Firebase",
-                        img: "/project2.jpg",
+                        img: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
                       },
                       {
                         title: "Admin Dashboard",
                         tech: "React.js • Chart.js",
-                        img: "/project3.jpg",
+                        img: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
                       },
                     ].map((project, i) => (
                       <div
@@ -146,9 +165,11 @@ export default function ExperienceTimeline() {
                         className="group rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 bg-white/60 dark:bg-white/[0.03] hover:-translate-y-1 transition-all duration-300"
                       >
                         <div className="overflow-hidden">
-                          <img
+                          <Image
                             src={project.img}
                             alt={project.title}
+                            width={500}
+                            height={300}
                             className="w-full h-44 object-cover group-hover:scale-105 transition-all duration-500"
                           />
                         </div>
@@ -204,9 +225,11 @@ export default function ExperienceTimeline() {
                   </div>
 
                   <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                    <img
-                      src="/your-certificate.jpg"
+                    <Image
+                      src="/image/nsda.png"
                       alt="Certificate"
+                      width={500}
+                      height={300}
                       className="w-full object-cover"
                     />
                   </div>
