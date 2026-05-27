@@ -1,3 +1,4 @@
+//About Section
 import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 export const heroImage =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
@@ -21,6 +22,101 @@ export const socials = [
     Icon: FaGithub,
     href: (p) => p.social?.github || "#",
   },
+];
+
+// ─── Skills data: featured (daily drivers) ar secondary (toolkit)
+import { FaJs, FaReact, FaGitAlt, FaFigma } from "react-icons/fa6";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiTypescript,
+  SiFirebase,
+  SiFramer,
+  SiRedux,
+  SiVercel,
+  SiCloudinary,
+  SiOpenai,
+} from "react-icons/si";
+import { MdOutlineSmartToy } from "react-icons/md";
+export const featured = [
+  {
+    name: "React",
+    icon: <FaReact />,
+    color: "#61dafb",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs />,
+    color: null,
+    tier: "Expert",
+    year: "1 yrs",
+  },
+  {
+    name: "JavaScript",
+    icon: <FaJs />,
+    color: "#f0c000",
+    tier: "Expert",
+    year: "1+ yrs",
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript />,
+    color: "#3178c6",
+    tier: "Proficient",
+    year: "1 yr",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss />,
+    color: "#06b6d4",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "Git",
+    icon: <FaGitAlt />,
+    color: "#e34f26",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "GitHub",
+    icon: <FaGithub />,
+    color: "#1572b6",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "Framer Motion",
+    icon: <SiFramer />,
+    color: null,
+    tier: "Proficient",
+    year: "1 yr",
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase />,
+    color: "#ffca28",
+    tier: "Proficient",
+    year: "1 yr",
+  },
+  {
+    name: "Redux",
+    icon: <SiRedux />,
+    color: "#764abc",
+    tier: "Proficient",
+    year: "1 yr",
+  },
+];
+
+export const secondary = [
+  { name: "Vercel", icon: <SiVercel />, color: null },
+  { name: "Cloudinary", icon: <SiCloudinary />, color: "#3448c5" },
+  { name: "Figma", icon: <FaFigma />, color: "#f24e1e" },
+  { name: "AI Tools", icon: <SiOpenai />, color: null },
+  { name: "Prompt Eng", icon: <MdOutlineSmartToy />, color: "#f59e0b" },
 ];
 // Testimonaials Section
 const testimonials1 =

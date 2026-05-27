@@ -7,32 +7,9 @@ import MagneticButton from "../ui/MagneticButton";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { heroImage, socials } from "@/src/helper/helper";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const heroImage =
-  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
-
-const socials = [
-  {
-    key: "instagram",
-    label: "Instagram",
-    Icon: FaInstagram,
-    href: (p) => p.social?.instagram || "#",
-  },
-  {
-    key: "linkedin",
-    label: "LinkedIn",
-    Icon: FaLinkedinIn,
-    href: (p) => p.social?.linkedin || "#",
-  },
-  {
-    key: "github",
-    label: "GitHub",
-    Icon: FaGithub,
-    href: (p) => p.social?.github || "#",
-  },
-];
 
 function buildST(trigger, isMobile, overrides = {}) {
   return {
