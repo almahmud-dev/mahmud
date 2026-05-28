@@ -190,7 +190,7 @@ export default function ExperienceTimeline() {
 
                           {/* Desktop hover overlay */}
                           <div className="absolute inset-0 bg-[#080810]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex flex-col items-center justify-center gap-3 p-4">
-                            <p className="text-white text-sm text-center leading-relaxed">
+                            <p className="text-white text-sm text-center">
                               {project.description}
                             </p>
                             <div className="flex gap-3 mt-2">

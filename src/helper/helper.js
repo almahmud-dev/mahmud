@@ -1,5 +1,19 @@
+import { FaInstagram, FaLinkedinIn, FaGithub, FaJs, FaReact, FaGitAlt, FaFigma } from "react-icons/fa6";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiTypescript,
+  SiFirebase,
+  SiFramer,
+  SiRedux,
+  SiVercel,
+  SiCloudinary,
+  SiOpenai,
+  SiReact,
+} from "react-icons/si";
+import { MdOutlineSmartToy } from "react-icons/md";
+
 //About Section
-import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 export const heroImage =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
 
@@ -26,19 +40,6 @@ export const socials = [
 
 // ============ Skills data ==============
 // featured (daily drivers) ar secondary (toolkit)
-import { FaJs, FaReact, FaGitAlt, FaFigma } from "react-icons/fa6";
-import {
-  SiTailwindcss,
-  SiNextdotjs,
-  SiTypescript,
-  SiFirebase,
-  SiFramer,
-  SiRedux,
-  SiVercel,
-  SiCloudinary,
-  SiOpenai,
-} from "react-icons/si";
-import { MdOutlineSmartToy } from "react-icons/md";
 export const featured = [
   {
     name: "React",
@@ -121,7 +122,6 @@ export const secondary = [
 ];
 
 // ============ Experience Section ===============
-import { SiReact } from "react-icons/si";
 export const internshipImages = [
   {
     id: 1,
@@ -144,29 +144,32 @@ export const internshipImages = [
 export const internshipProjects = [
   {
     title: "Uomo Ui",
-    image: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779943297/work2_f5rijd.png",
+    image:
+      "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779943297/work2_f5rijd.png",
     live: "https://uomo-ui.vercel.app/",
     github: null,
     category: "Frontend",
-    types: ["Frontend", "React", "Tailwind"],
+    types: ["Frontend", "Next.js", "Tailwind"],
     status: "Completed",
     description:
-      "A modern UI component library built with React and Tailwind CSS for rapid frontend development.",
+      "A modern and scalable UI platform built with Next.js and Tailwind CSS, focused on clean component architecture, responsive layouts, optimized performance, and smooth user experience.",
     tech: [
-       { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Cloudinary", icon: <SiCloudinary /> },
+      { name: "Firebase", icon: <SiFirebase /> },
     ],
   },
   {
     title: "Educate Ecommerce",
-    image: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868816/eduact_kllduz.png",
+    image:
+      "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868816/eduact_kllduz.png",
     live: "https://ebt-eduact.vercel.app/",
     github: null,
     category: "Frontend",
     types: ["Frontend", "Next.js", "React"],
     status: "Live",
     description:
-      "An ecommerce platform for educational products built with Next.js and Firebase backend.",
+      "A fully responsive ecommerce platform for educational products, developed with Next.js and Firebase, featuring modern UI design, dynamic product sections, optimized performance, and seamless user interaction across devices.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs /> },
       { name: "Firebase", icon: <SiFirebase /> },
@@ -175,17 +178,19 @@ export const internshipProjects = [
   },
   {
     title: "Cit Promotion",
-    image: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
+    image:
+      "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
     live: "https://cit-pro.vercel.app/",
     github: null,
     category: "Frontend",
     types: ["Frontend", "React", "Tailwind"],
     status: "Live",
     description:
-      "A promotional website for CIT institute with dynamic sections and modern design.",
+      "A modern promotional website for CIT Institute designed with React and Tailwind CSS, featuring responsive layouts, engaging visual presentation, smooth navigation, and performance-focused frontend development.",
     tech: [
       { name: "React", icon: <SiReact /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Vercel", icon: <SiVercel /> },
     ],
   },
 ];
