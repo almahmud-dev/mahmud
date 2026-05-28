@@ -2,9 +2,30 @@ import React from "react";
 import Container from "../ui/Container";
 import SectionHeader from "../ui/SectionHeader";
 import Image from "next/image";
+import { HiOutlineBriefcase } from "react-icons/hi2";
+import { PiGraduationCap } from "react-icons/pi";
+// import { internshipProjects } from "@/src/data/helper";
+import { FaGithub } from "react-icons/fa";
+import { HiArrowUpRight } from "react-icons/hi2";
+import { internshipProjects, internshipImages } from "@/src/helper/helper";
 
 export default function ExperienceTimeline() {
-  const images = ["/image/work1.png", "/image/info.png", "/image/inter.png"];
+  const getStatusStyle = (status) => {
+    switch (status) {
+      case "Completed":
+        return "bg-green-500/15 text-green-500 border border-green-500/20";
+
+      case "Live":
+        return "bg-blue-500/15 text-blue-500 border border-blue-500/20";
+
+      case "In Progress":
+        return "bg-yellow-500/15 text-yellow-500 border border-yellow-500/20";
+
+      default:
+        return "bg-gray-500/15 text-gray-400 border border-gray-500/20";
+    }
+  };
+
   return (
     <section
       id="experience"
@@ -39,7 +60,7 @@ export default function ExperienceTimeline() {
               {/* Timeline Dot */}
               <div className="hidden md:flex flex-col items-center relative z-10">
                 <div className="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center shadow-lg shadow-accent/30 border border-accent/30">
-                  💼
+                  <HiOutlineBriefcase className="text-2xl" />
                 </div>
 
                 <div className="mt-4 text-center">
@@ -60,7 +81,7 @@ export default function ExperienceTimeline() {
                         Frontend Development Intern
                       </h3>
 
-                      <span className="px-4 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold border border-accent/10">
+                      <span className="px-4 py-1 rounded-full bg-accent/10 dark:bg-lime-500 dark:text-white/80 text-accent text-xs font-bold border border-accent/10">
                         4 Months
                       </span>
                     </div>
@@ -118,19 +139,23 @@ export default function ExperienceTimeline() {
                   </div>
 
                   {/* Right Image */}
-                  <div className="lg:w-[320px] flex flex-col gap-5">
-                    {images.map((img, i) => (
+                  <div className="lg:w-[320px] flex flex-col gap-4">
+                    {internshipImages.map((img, i) => (
                       <div
-                        key={i}
-                        className="rounded-lg overflow-hidden border border-white/10 shadow-2xl"
+                        key={img.id}
+                        className="relative rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 shadow-xl group"
                       >
                         <Image
-                          src={img}
+                          src={img.image}
                           alt={`Internship Work ${i + 1}`}
                           width={500}
                           height={300}
-                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          quality={75}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
+
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
                       </div>
                     ))}
                   </div>
@@ -143,43 +168,112 @@ export default function ExperienceTimeline() {
                   </h5>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {[
-                      {
-                        title: "Learning Management System",
-                        tech: "React.js • Tailwind CSS",
-                        img: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868816/eduact_kllduz.png",
-                      },
-                      {
-                        title: "Institute Website Redesign",
-                        tech: "Next.js • Firebase",
-                        img: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
-                      },
-                      {
-                        title: "Admin Dashboard",
-                        tech: "React.js • Chart.js",
-                        img: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
-                      },
-                    ].map((project, i) => (
+                    {internshipProjects.map((project, i) => (
                       <div
                         key={i}
-                        className="group rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 bg-white/60 dark:bg-white/[0.03] hover:-translate-y-1 transition-all duration-300"
+                        className="group flex flex-col rounded-2xl overflow-hidden border border-black/8 dark:border-white/8 bg-white dark:bg-white/5 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/8 hover:-translate-y-1 transition-all duration-300"
                       >
-                        <div className="overflow-hidden">
+                        {/* Image + Desktop Hover Overlay */}
+                        <div className="relative w-full aspect-video overflow-hidden">
                           <Image
-                            src={project.img}
+                            src={project.image}
                             alt={project.title}
-                            width={500}
-                            height={300}
-                            className="w-full h-44 object-cover group-hover:scale-105 transition-all duration-500"
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
+
+                          {/* Category Badge */}
+                          <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/50 backdrop-blur-sm text-white border border-white/10">
+                            {project.category}
+                          </span>
+
+                          {/* Desktop hover overlay */}
+                          <div className="absolute inset-0 bg-[#080810]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex flex-col items-center justify-center gap-3 p-4">
+                            <p className="text-white text-sm text-center leading-relaxed">
+                              {project.description}
+                            </p>
+                            <div className="flex gap-3 mt-2">
+                              {project.github ? (
+                                <a
+                                  target="_blank"
+                                  href={project.github}
+                                  className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-xs font-semibold hover:scale-105 transition-transform"
+                                >
+                                  <FaGithub className="text-sm" /> Code
+                                </a>
+                              ) : (
+                                <span className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/20 text-white/50 text-xs font-semibold cursor-not-allowed border border-white/10">
+                                  <FaGithub className="text-sm" /> Private
+                                </span>
+                              )}
+                              <a
+                                target="_blank"
+                                href={project.live}
+                                className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent text-white text-xs font-semibold hover:scale-105 transition-transform"
+                              >
+                                <HiArrowUpRight className="text-sm" /> Live
+                              </a>
+                            </div>
+                          </div>
                         </div>
 
-                        <div className="p-4">
-                          <h4 className="font-bold">{project.title}</h4>
+                        {/* Card Body */}
+                        <div className="flex flex-col flex-1 p-3 sm:p-4">
+                          <div className="flex items-center justify-between gap-2">
+                            <h4 className="text-base font-bold leading-snug">
+                              {project.title}
+                            </h4>
+                            <span
+                              className={`px-2 py-0.5 text-[10px] font-semibold rounded-full whitespace-nowrap ${getStatusStyle(project.status)}`}
+                            >
+                              {project.status}
+                            </span>
+                          </div>
 
-                          <p className="text-accent text-sm mt-1">
-                            {project.tech}
+                          {/* Mobile: description */}
+                          <p className="md:hidden text-xs text-secondary/60 mt-1.5 leading-relaxed">
+                            {project.description}
                           </p>
+
+                          <div className="flex-1" />
+
+                          {/* Tech Stack */}
+                          <div className="flex flex-wrap gap-1.5 mt-3">
+                            {project.tech.map((t, idx) => (
+                              <span
+                                key={idx}
+                                className="flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-lg bg-black/4 dark:bg-white/5 border border-black/8 dark:border-white/8 hover:border-accent/40 hover:text-accent transition-colors cursor-default"
+                              >
+                                <span className="text-accent text-base leading-none">
+                                  {t.icon}
+                                </span>
+                                {t.name}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Mobile: buttons */}
+                          <div className="md:hidden flex gap-2 mt-4">
+                            {project.github ? (
+                              <a
+                                href={project.github}
+                                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-black/10 dark:border-white/10 text-xs font-semibold hover:border-accent/40 hover:text-accent transition-colors"
+                              >
+                                <FaGithub /> Code
+                              </a>
+                            ) : (
+                              <span className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-black/10 dark:border-white/10 text-xs font-semibold opacity-40 cursor-not-allowed">
+                                <FaGithub /> Private
+                              </span>
+                            )}
+                            <a
+                              href={project.live}
+                              className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-accent text-white text-xs font-semibold hover:opacity-90 transition-opacity"
+                            >
+                              <HiArrowUpRight /> Live
+                            </a>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -193,7 +287,7 @@ export default function ExperienceTimeline() {
               {/* Timeline */}
               <div className="hidden md:flex flex-col items-center relative z-10">
                 <div className="w-12 h-12 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-lg shadow-blue-500/30 border border-blue-500/30">
-                  🎓
+                  <PiGraduationCap className="text-2xl" />
                 </div>
 
                 <div className="mt-4 text-center">

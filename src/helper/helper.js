@@ -120,6 +120,76 @@ export const secondary = [
   { name: "Prompt Eng", icon: <MdOutlineSmartToy />, color: "#f59e0b" },
 ];
 
+// ============ Experience Section ===============
+import { SiReact } from "react-icons/si";
+export const internshipImages = [
+  {
+    id: 1,
+    image:
+      "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779974971/working1_gcbtvp.png",
+  },
+
+  {
+    id: 2,
+    image:
+      "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779974970/working2_lqheu9.jpg",
+  },
+
+  {
+    id: 3,
+    image:
+      "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779974970/working3_c8gfxm.jpg",
+  },
+];
+export const internshipProjects = [
+  {
+    title: "Uomo Ui",
+    image: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779943297/work2_f5rijd.png",
+    live: "https://uomo-ui.vercel.app/",
+    github: null,
+    category: "Frontend",
+    types: ["Frontend", "React", "Tailwind"],
+    status: "Completed",
+    description:
+      "A modern UI component library built with React and Tailwind CSS for rapid frontend development.",
+    tech: [
+       { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+    ],
+  },
+  {
+    title: "Educate Ecommerce",
+    image: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868816/eduact_kllduz.png",
+    live: "https://ebt-eduact.vercel.app/",
+    github: null,
+    category: "Frontend",
+    types: ["Frontend", "Next.js", "React"],
+    status: "Live",
+    description:
+      "An ecommerce platform for educational products built with Next.js and Firebase backend.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Firebase", icon: <SiFirebase /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+    ],
+  },
+  {
+    title: "Cit Promotion",
+    image: "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868766/profile2_kme5er.jpg",
+    live: "https://cit-pro.vercel.app/",
+    github: null,
+    category: "Frontend",
+    types: ["Frontend", "React", "Tailwind"],
+    status: "Live",
+    description:
+      "A promotional website for CIT institute with dynamic sections and modern design.",
+    tech: [
+      { name: "React", icon: <SiReact /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+    ],
+  },
+];
+
 // ============ Testimonaials Section ============
 const testimonials1 =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868910/testimonial1_c4x4or.png";
