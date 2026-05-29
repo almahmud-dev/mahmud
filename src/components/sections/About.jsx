@@ -210,7 +210,6 @@ export default function About() {
               fill
               sizes="33vw"
               className="object-cover object-top transition duration-700 scale-105 group-hover:scale-100 dark:brightness-75"
-              priority
             />
             <div className="absolute bottom-4 right-4 z-20">
               <div className="backdrop-blur-md bg-white/10 dark:bg-black/40 px-3 py-2.5 rounded-xl border border-white/20 dark:border-white/10 text-gray-800 dark:text-white">

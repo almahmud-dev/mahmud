@@ -15,7 +15,7 @@ import { MdOutlineSmartToy } from "react-icons/md";
 
 //About Section
 export const heroImage =
-  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_800/v1779868606/image_fippda.jpg";
 
 export const socials = [
   {
