@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 
 // ✅ Mobile detect — mouse tracker mobile এ দরকার নেই, শুধু বন্ধ করে দাও
 const isMobile = () =>
-  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+  typeof window !== "undefined" &&
+  window.matchMedia("(pointer: coarse)").matches;
 
 const MouseTracker = ({ className }) => {
   const circleRef = useRef(null);
@@ -59,6 +60,8 @@ const MouseTracker = ({ className }) => {
   return (
     <div
       ref={circleRef}
+      aria-hidden="true"
+      role="presentation"
       className={`tracker fixed w-10 h-10 bg-accent/10 dark:bg-accent/30 border border-accent/50 rounded-full z-[999] pointer-events-none ${className}`}
       style={{
         left: 0,

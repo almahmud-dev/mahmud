@@ -60,7 +60,8 @@ export default function MagneticButton({
       href={href}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative items-center justify-center overflow-hidden cursor-pointer ${className}`}
+      role="button"
+      className={`relative items-center justify-center overflow-hidden cursor-pointer inline-flex ${className}`}
     >
       <span
         ref={fillRef}

@@ -15,6 +15,7 @@ export const metadata = {
   title: "Al Mahmud | Frontend Developer",
   description:
     "Frontend Developer from Bangladesh, building modern and responsive web applications with React and Next.js.",
+  metadataBase: new URL("https://mahmud-dev-bd.vercel.app/"),
 };
 
 export default function RootLayout({ children }) {

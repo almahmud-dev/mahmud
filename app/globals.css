@@ -109,6 +109,11 @@ h1[data-heading]::after {
 .swiper-slide > * {
   width: 100%;
 }
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 /* Noise texture overlay */
 .noise-bg::before {
   content: "";
