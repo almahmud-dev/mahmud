@@ -177,9 +177,7 @@ export default function About() {
                 ))}
               </div>
               <p className="text-sm leading-relaxed text-black dark:text-white/80">
-                I specialize in frontend development, creating responsive and
-                intuitive web experiences with a strong focus on performance,
-                accessibility, and clean code.
+                Good design catches attention, but great experiences keep people engaged. I enjoy building frontend interfaces that feel fast, intuitive, and effortless to use because the best products are the ones people don't have to think about.
               </p>
             </div>
             <div className="flex gap-3">
@@ -215,11 +213,11 @@ export default function About() {
               <div className="backdrop-blur-md bg-white/10 dark:bg-black/40 px-3 py-2.5 rounded-xl border border-white/20 dark:border-white/10 text-gray-800 dark:text-white">
                 <div className="flex items-center gap-2 mb-0.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <p className="text-[9px] uppercase tracking-widest opacity-70">
-                    Available for
+                  <p className="text-[11px] text-white font-bold uppercase tracking-widest">
+                    Al Mahmud
                   </p>
                 </div>
-                <p className="text-xs font-semibold">Freelance Projects</p>
+                <p className="text-xs font-semibold text-white/80 opacity-80">Frontend Developer</p>
               </div>
             </div>
           </div>

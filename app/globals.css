@@ -114,6 +114,19 @@ h1[data-heading]::after {
   outline-offset: 3px;
   border-radius: 4px;
 }
+/*------- Hero Section Text -------------*/
+/* .letter-hover:hover {
+  background: linear-gradient(90deg, #ff0055, #0055ff, #00ffcc, #ff0055);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorMove 2s linear infinite;
+}
+
+@keyframes colorMove {
+  to { background-position: 300% 0%; }
+} */
 /* Noise texture overlay */
 .noise-bg::before {
   content: "";
