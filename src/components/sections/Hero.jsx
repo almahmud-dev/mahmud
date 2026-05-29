@@ -12,20 +12,19 @@ const heroImage =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868606/image_fippda.jpg";
 const profession = [
   "Frontend Developer",
-  "Performance & Animation",
   "Modern UI Design",
-  "Clean Code & Structure",
+  "Clean Code & Architecture",
 ];
 
 const professionMobile = ["Frontend", "Next.js", "UI Design"];
 
 const stacks = [
+  " React",
   "Next.js",
   "TypeScript",
-  "React",
   "Tailwind CSS",
-  "Framer Motion",
   "GSAP",
+  "Framer Motion",
 ];
 
 export default function Hero() {
@@ -136,12 +135,12 @@ export default function Hero() {
           <div
             ref={badgeRef}
             style={{ opacity: 0 }}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap"
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30"
           >
-            <div className="flex items-center gap-2 px-3 py-2 rounded-xl backdrop-blur-md bg-black/40 border border-white/15 text-white">
+            <div className="w-max flex items-center gap-2 px-3 py-2 rounded-xl backdrop-blur-md bg-black/40 border border-white/15 text-white">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium tracking-wide">
-                Open to work
+              <span className="block text-center text-[10px] sm:text-xs font-medium tracking-wide">
+                Open to Frontend Opportunities
               </span>
             </div>
           </div>
@@ -150,7 +149,7 @@ export default function Hero() {
         {/* overflow-hidden rakha hoyeche - letter y:120 theke ashar time scroll bar na ashe */}
         <h1
           data-heading={name}
-          className="relative uppercase text-center mx-auto w-fit font-black italic font-audiowide select-none text-black dark:text-white"
+          className="relative uppercase text-center mx-auto w-fit font-black italic font-audiowide select-none text-black/90 dark:text-white"
           style={{ fontSize: "clamp(60px, 17vw, 280px)" }}
         >
           <span className="flex justify-center">
@@ -183,9 +182,12 @@ export default function Hero() {
 
           <div className="hidden lg:flex flex-wrap items-center justify-between">
             {profession.map((p, i) => (
-              <div key={i} className="flex items-center gap-2 xl:gap-3">
+              <div
+  key={i}
+  className="group flex items-center gap-2 xl:gap-3 cursor-default transition-all duration-300 hover:text-accent hover:translate-x-1"
+>
                 <span className="text-xs tracking-widest text-accent">0{i + 1}.</span>
-                <span className="font-bold xl:text-lg uppercase tracking-tight">{p}</span>
+                <span className="font-bold text-sm lg:text-base xl:text-[20px] uppercase tracking-tight">{p}</span>
               </div>
             ))}
           </div>
@@ -194,10 +196,9 @@ export default function Hero() {
         <p
           ref={taglineRef}
           style={{ opacity: 0 }}
-          className="text-center text-xs sm:text-sm text-secondary/80 mt-4 font-figtree font-normal tracking-normal normal-case"
+          className="text-center text-xs sm:text-sm md:text-[18px] text-secondary mt-4 font-figtree font-normal tracking-normal normal-case"
         >
-          Building performant, pixel-perfect UIs with{" "}
-          <span className="text-accent font-semibold">Next.js & TypeScript</span>.
+         Turning ideas into modern, responsive products with clean code and thoughtful design.
         </p>
 
         <div className="flex flex-wrap justify-center gap-2 mt-4">
