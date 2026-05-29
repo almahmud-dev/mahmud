@@ -89,11 +89,12 @@ export default function NavbarDesktop({ scrolled, active, handleNav, open, setOp
         </div>
 
         <div className="flex items-center gap-3 px-4">
-          <MagneticButton
+         <div className="hidden lg:block">
+           <MagneticButton
             href="#contact"
             fillColor="#F5F0E8"
             textHoverColor="#000000"
-            className="hidden lg:block self-start px-7 py-4 bg-lime-400 text-black text-xs font-bold tracking-widest rounded-sm"
+            className="self-start px-7 py-4 bg-lime-400 text-black text-xs font-bold tracking-widest rounded-sm"
           >
             LET'S TALK
             <svg
@@ -110,8 +111,9 @@ export default function NavbarDesktop({ scrolled, active, handleNav, open, setOp
               />
             </svg>
           </MagneticButton>
+         </div>
 
-          {/* Hamburger button — Navbar এর ভেতরে, sm: এর নিচে দেখাবে */}
+          {/* Hamburger button — Navbar er vitore and sm: er nice dekhabe */}
           <button
             onClick={() => setOpen((v) => !v)}
             className="sm:hidden flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full border border-black/10 dark:border-white/10 hover:border-accent hover:text-accent transition-[border-color,color] duration-200"
