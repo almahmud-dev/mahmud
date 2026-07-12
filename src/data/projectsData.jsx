@@ -1,3 +1,4 @@
+import { MdPayment, MdSecurity } from "react-icons/md";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -8,8 +9,18 @@ import {
   SiVercel,
   SiTypescript,
   SiThreedotjs,
+  SiPostgresql,
+  SiSupabase,
+  SiGreensock,
+  SiJavascript,
 } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
+const crmDashboard =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,c_limit,w_1200/v1783867210/dashboard_p7dnlb";
+const edufilo =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,c_limit,w_1600/v1783867224/edufilo_ofwvkg";
+const qeducato =
+  "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,c_limit,w_1600/v1783867229/qeducato_uj7djf";
 const uomo =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,w_1200/v1779868781/uomo_l3ykar.png";
 const bazardor =
@@ -105,6 +116,42 @@ const ZustandIcon = () => (
 
 export const projects = [
   {
+    title: "Vertex CRM Dashboard",
+    image: crmDashboard,
+    live: "https://your-live-link.com",
+    github: "https://github.com/your-username/vertex-crm",
+    category: "Full Stack",
+    types: ["Full Stack", "TypeScript", "Next.js"],
+    status: "Completed",
+    description:
+      "A modern CRM dashboard featuring Supabase Authentication, PostgreSQL integration, interactive analytics, reusable components, and a fully responsive interface built for efficient business management.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "Supabase", icon: <SiSupabase /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "Authentication", icon: <MdSecurity /> },
+    ],
+  },
+  {
+    title: "EduFilos – Madrasah Management SaaS",
+    image: edufilo,
+    live: "https://your-live-link.com",
+    github: "https://github.com/your-username/edufilos",
+    category: "Full Stack",
+    types: ["SaaS", "Education", "Next.js"],
+    status: "Completed",
+    description:
+      "A modern Madrasah Management SaaS platform with multilingual support, Firebase Authentication, payment gateway integration, responsive UI, smooth GSAP animations, and reusable component architecture.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "Firebase", icon: <SiFirebase /> },
+      { name: "Payment Gateway", icon: <MdPayment /> },
+      { name: "GSAP", icon: <SiGreensock /> },
+    ],
+  },
+  {
     title: "Uomo UI Ecommerce",
     image: uomo,
     live: "https://uomo-uim.vercel.app/",
@@ -119,6 +166,57 @@ export const projects = [
       { name: "Tailwind", icon: <SiTailwindcss /> },
       { name: "Firebase", icon: <SiFirebase /> },
       { name: "Cloudinary", icon: <SiCloudinary /> },
+    ],
+  },
+  {
+    title: "Qeducato University",
+    image: qeducato,
+    live: "https://qeducato.vercel.app",
+    github: "https://github.com/almahmud-dev/qeducato-platform",
+    category: "Frontend",
+    types: ["Frontend", "Next.js", "Education"],
+    status: "Completed",
+    description:
+      "A premium university website built with a modern interface, responsive layouts, smooth GSAP animations, payment gateway integration, and conversion-focused sections to deliver a fast and engaging user experience.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "Payment Gateway", icon: <MdPayment /> },
+      { name: "GSAP", icon: <SiGreensock /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+    ],
+  },
+  {
+    title: "Bitox Business Consulting",
+    image: bitox,
+    live: "https://bitox-business-consulting-website.vercel.app/",
+    github: "",
+    category: "Client Work",
+    types: ["Client Work", "Frontend", "Tailwind", "React"],
+    status: "Completed",
+    description:
+      "Contributed to the homepage UI of a multi-page client website. Worked on initial implementation and UI fixes before final deployment.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Tanstack", icon: <TbBrandReactNative /> },
+      { name: "Vercel", icon: <SiVercel /> },
+    ],
+  },
+  {
+    title: "SWE Domain",
+    image: sweDomain,
+    live: "https://nextjs-landingpage-lyart.vercel.app/",
+    github: "https://github.com/almahmud-dev/Nextjs-landingpage",
+    category: "Next.js",
+    types: ["Animation", "Tailwind", "Next.js"],
+    status: "Improving",
+    description:
+      "A fast and simple domain registration platform built for Bangladeshi developers and businesses. Search, claim, and register your .swe.bd domain in seconds powered by Next.js and Framer Motion",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Tanstack", icon: <TbBrandReactNative /> },
     ],
   },
   {
@@ -154,23 +252,7 @@ export const projects = [
       { name: "Lenis", icon: <LenisIcon /> },
     ],
   },
-  {
-    title: "Bitox Business Consulting",
-    image: bitox,
-    live: "https://bitox-business-consulting-website.vercel.app/",
-    github: "",
-    category: "Client Work",
-    types: ["Client Work", "Frontend", "Tailwind", "React"],
-    status: "Completed",
-    description:
-      "Contributed to the homepage UI of a multi-page client website. Worked on initial implementation and UI fixes before final deployment.",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
-      { name: "Tanstack", icon: <TbBrandReactNative /> },
-      { name: "Vercel", icon: <SiVercel /> },
-    ],
-  },
+
   {
     title: "3D Portfolio",
     image: threeDProject,
@@ -218,22 +300,6 @@ export const projects = [
       { name: "React", icon: <SiReact /> },
       { name: "Tailwind", icon: <SiTailwindcss /> },
       { name: "GSAP", icon: <SiGsap /> },
-    ],
-  },
-  {
-    title: "SWE Domain",
-    image: sweDomain,
-    live: "https://nextjs-landingpage-lyart.vercel.app/",
-    github: "https://github.com/almahmud-dev/Nextjs-landingpage",
-    category: "Next.js",
-    types: ["Animation", "Tailwind", "Next.js"],
-    status: "Improving",
-    description:
-      "A fast and simple domain registration platform built for Bangladeshi developers and businesses. Search, claim, and register your .swe.bd domain in seconds powered by Next.js and Framer Motion",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
-      { name: "Tanstack", icon: <TbBrandReactNative /> },
     ],
   },
   {

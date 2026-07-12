@@ -7,7 +7,7 @@ import MagneticButton from "../ui/MagneticButton";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { heroImage, socials } from "@/src/helper/helper";
+import { heroImage, socials } from "@/src/helper";
 
 gsap.registerPlugin(ScrollTrigger);
 

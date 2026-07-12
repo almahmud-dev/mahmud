@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import Container from "../ui/Container";
 import SectionHeader from "../ui/SectionHeader";
 import TestimonialCard from "../ui/TestimonialCard";
-import { testimonials } from "@/src/helper/helper";
+import { testimonials } from "@/src/helper";
 
 export default function Testimonials() {
   // Har render e notu object create hoy — Swiper re-init triggor kore
@@ -147,6 +147,7 @@ export default function Testimonials() {
         >
           {/* Prev */}
           <button
+            aria-label="Previous testimonial"
             className="
             testimonial-prev
             flex
@@ -168,7 +169,7 @@ export default function Testimonials() {
             hover:text-accent
           "
           >
-            <HiOutlineArrowLeft className="text-xl" />
+            <HiOutlineArrowLeft aria-hidden="true" className="text-xl" />
           </button>
 
           {/* Pagination */}
@@ -176,6 +177,7 @@ export default function Testimonials() {
 
           {/* Next */}
           <button
+            aria-label="Next testimonial"
             className="
             testimonial-next
             flex
@@ -197,7 +199,7 @@ export default function Testimonials() {
             hover:text-accent
           "
           >
-            <HiOutlineArrowRight className="text-xl" />
+            <HiOutlineArrowRight aria-hidden="true" className="text-xl" />
           </button>
         </div>
       </Container>

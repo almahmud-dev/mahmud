@@ -1,155 +1,145 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Container from "@/src/components/ui/Container";
 import SectionHeader from "@/src/components/ui/SectionHeader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FeaturedCard, SecondaryPill } from "../ui/Skillcard";
-import { featured, secondary } from "@/src/helper/helper";
+import { featured, secondary } from "@/src/helper";
 
 gsap.registerPlugin(ScrollTrigger);
+
 // ─── Main Skills Section
 export default function Skills() {
-  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const dividerRef = useRef(null);
-  const countPillRef = useRef(null);
-  const hasInitialized = useRef(false);
 
-  // ─── Mobile detection ar resize listener
   useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768; // md breakpoint
-      setIsMobile(mobile);
-    };
+    const isMobile =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches;
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // ─── GSAP: Section-level animations (description, divider, count pill)
-  useEffect(() => {
-    if (hasInitialized.current) return;
-    hasInitialized.current = true;
-
-    // Mobile e animations skip
-    if (isMobile) {
-      gsap.set(
-        [descriptionRef.current, dividerRef.current, countPillRef.current],
-        {
-          opacity: 1,
-        },
-      );
-      return;
-    }
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const ctx = gsap.context(() => {
-      // Description paragraph: fade in + slide up
-      if (descriptionRef.current) {
-        gsap.set(descriptionRef.current, { willChange: "transform, opacity" });
-        gsap.fromTo(
-          descriptionRef.current,
-          { opacity: 0, y: 14 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: descriptionRef.current,
-              start: "top 92%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-            onComplete: () => {
-              gsap.set(descriptionRef.current, { clearProps: "willChange" });
-            },
-          },
+      // Reduced motion hole sob statically visible rekhe deya, animation skip
+      if (prefersReducedMotion) {
+        gsap.set(
+          ".skills-header, .skills-description, .skills-divider, .skills-featured-card, .skills-secondary-pill, .skills-count-pill",
+          { opacity: 1, x: 0, y: 0, scaleX: 1 },
         );
+        return;
       }
 
-      // Divider line: scale-x from left
-      if (dividerRef.current) {
-        gsap.set(dividerRef.current, { willChange: "transform" });
-        gsap.fromTo(
-          dividerRef.current,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: dividerRef.current,
-              start: "top 90%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-            onComplete: () => {
-              gsap.set(dividerRef.current, { clearProps: "willChange" });
-            },
+      // 1. Section header fade + slide up
+      gsap.fromTo(
+        ".skills-header",
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
           },
-        );
-      }
-
-      // Count pill: fade in (delay er jonno section-level timing)
-      if (countPillRef.current) {
-        gsap.set(countPillRef.current, { willChange: "opacity" });
-        gsap.fromTo(
-          countPillRef.current,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.5,
-            ease: "power2.out",
-            delay: 0.3,
-            scrollTrigger: {
-              trigger: countPillRef.current,
-              start: "top 92%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-            onComplete: () => {
-              gsap.set(countPillRef.current, { clearProps: "willChange" });
-            },
-          },
-        );
-      }
-
-      // Section header (SectionHeader component e GSAP already ache, but add global context support)
-      const headers = sectionRef.current?.querySelectorAll(
-        "[data-section-header]",
+        },
       );
-      if (headers && headers.length > 0) {
-        headers.forEach((header) => {
-          gsap.set(header, { willChange: "transform, opacity" });
-          gsap.fromTo(
-            header,
-            { opacity: 0, y: 10 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: header,
-                start: "top 92%",
-                toggleActions: "play none none none",
-                once: true,
-              },
-              onComplete: () => {
-                gsap.set(header, { clearProps: "willChange" });
-              },
-            },
-          );
-        });
-      }
-    });
+
+      // 2. Description paragraph fade + slide up
+      gsap.fromTo(
+        ".skills-description",
+        { opacity: 0, y: 14 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+
+      // 3. Featured cards stagger in
+      gsap.fromTo(
+        ".skills-featured-card",
+        { opacity: 0, y: isMobile ? 16 : 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: ".skills-featured-grid",
+            start: "top 88%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+
+      // 4. Divider line scale-x from left
+      gsap.fromTo(
+        ".skills-divider",
+        { scaleX: 0 },
+        {
+          scaleX: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          transformOrigin: "left center",
+          scrollTrigger: {
+            trigger: ".skills-divider",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+
+      // 5. Secondary pills stagger in
+      gsap.fromTo(
+        ".skills-secondary-pill",
+        { opacity: 0, y: 12 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power3.out",
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: ".skills-secondary-grid",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+
+      // 6. Technology count pill fade in
+      gsap.fromTo(
+        ".skills-count-pill",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: ".skills-count-pill",
+            start: "top 92%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }, sectionRef);
 
     return () => ctx.revert();
-  }, [isMobile]);
+  }, []);
 
   return (
     <section
@@ -159,15 +149,12 @@ export default function Skills() {
     >
       <Container>
         {/* Section header: "Skills & Tools" */}
-        <div data-section-header>
+        <div className="skills-header">
           <SectionHeader text="Skills & Tools" colorWord="Tools" />
         </div>
 
         {/* Description paragraph */}
-        <p
-          ref={descriptionRef}
-          className="text-center text-sm text-black/45 dark:text-white/45 max-w-lg mx-auto mb-14"
-        >
+        <p className="skills-description text-center text-sm text-black/45 dark:text-white/45 max-w-lg mx-auto mb-14">
           Technologies I reach for when building modern, production-grade web
           applications.
         </p>
@@ -179,23 +166,17 @@ export default function Skills() {
             Daily drivers
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="skills-featured-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {featured.map((skill, i) => (
-              <FeaturedCard
-                key={skill.name}
-                skill={skill}
-                index={i}
-                isMobile={isMobile}
-              />
+              <div className="skills-featured-card" key={skill.name}>
+                <FeaturedCard skill={skill} index={i} />
+              </div>
             ))}
           </div>
         </div>
 
         {/* ─── Divider line ─── */}
-        <div
-          ref={dividerRef}
-          className="my-10 h-px bg-black/[0.07] dark:bg-white/[0.07] origin-left"
-        />
+        <div className="skills-divider my-10 h-px bg-black/[0.07] dark:bg-white/[0.07] origin-left" />
 
         {/* ─── Secondary skills section (Also in the toolkit) ─── */}
         <div>
@@ -204,20 +185,17 @@ export default function Skills() {
             Also in the toolkit
           </div>
 
-          <div className="flex flex-wrap gap-2.5">
+          <div className="skills-secondary-grid flex flex-wrap gap-2.5">
             {secondary.map((skill, i) => (
-              <SecondaryPill
-                key={skill.name}
-                skill={skill}
-                index={i}
-                isMobile={isMobile}
-              />
+              <div className="skills-secondary-pill" key={skill.name}>
+                <SecondaryPill skill={skill} index={i} />
+              </div>
             ))}
           </div>
         </div>
 
         {/* ─── Technology count pill ─── */}
-        <div ref={countPillRef} className="flex justify-center mt-14">
+        <div className="skills-count-pill flex justify-center mt-14">
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[--color-accent]/10 border border-[--color-accent]/20 text-[--color-accent] text-xs font-bold uppercase tracking-widest">
             <span className="w-1.5 h-1.5 rounded-full bg-[--color-accent] animate-pulse" />
             {featured.length + secondary.length} Technologies

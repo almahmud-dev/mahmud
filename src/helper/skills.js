@@ -1,0 +1,121 @@
+import { FaFigma, FaGitAlt, FaGithub, FaJs, FaReact } from "react-icons/fa6";
+import { TbBrandReactNative } from "react-icons/tb";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiTypescript,
+  SiFirebase,
+  SiRedux,
+  SiVercel,
+  SiCloudinary,
+  SiOpenai,
+  SiGreensock,
+  SiSupabase,
+  SiPostman,
+  SiReactquery,
+} from "react-icons/si";
+import { MdDevices, MdSecurity } from "react-icons/md";
+export const featured = [
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs />,
+    color: null,
+    tier: "Expert",
+    year: "1+ yrs",
+  },
+  {
+    name: "React",
+    icon: <FaReact />,
+    color: "#61dafb",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript />,
+    color: "#3178c6",
+    tier: "Advanced",
+    year: "1+ yrs",
+  },
+  {
+    name: "JavaScript",
+    icon: <FaJs />,
+    color: "#f7df1e",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss />,
+    color: "#06b6d4",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+  {
+    name: "GSAP",
+    icon: <SiGreensock />,
+    color: "#88ce02",
+    tier: "Advanced",
+    year: "1+ yrs",
+  },
+  {
+    name: "Zustand",
+    icon: <TbBrandReactNative />,
+    color: "#ff9d00",
+    tier: "Advanced",
+    year: "1 yr",
+  },
+  {
+    name: "Context API",
+    icon: <FaReact />,
+    color: "#61DAFB",
+    tier: "Advanced",
+    year: "2 yrs",
+  },
+  {
+    name: "Supabase",
+    icon: <SiSupabase />,
+    color: "#3ecf8e",
+    tier: "Advanced",
+    year: "1 yr",
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase />,
+    color: "#ffca28",
+    tier: "Advanced",
+    year: "1 yr",
+  },
+  {
+    name: "Authentication",
+    icon: <MdSecurity />,
+    color: "#EF4444",
+    tier: "Advanced",
+    year: "2 yrs",
+  },
+  {
+    name: "Responsive Design",
+    icon: <MdDevices />,
+    color: "#3B82F6",
+    tier: "Advanced",
+    year: "2 yrs",
+  },
+  {
+    name: "Git",
+    icon: <FaGitAlt />,
+    color: "#f05032",
+    tier: "Expert",
+    year: "2 yrs",
+  },
+];
+
+export const secondary = [
+  { name: "GitHub", icon: <FaGithub />, color: null },
+  { name: "Redux Toolkit", icon: <SiRedux />, color: "#764abc" },
+  { name: "TanStack Query", icon: <SiReactquery />, color: "#ff4154" },
+  { name: "Vercel", icon: <SiVercel />, color: null },
+  { name: "Cloudinary", icon: <SiCloudinary />, color: "#3448c5" },
+  { name: "Figma", icon: <FaFigma />, color: "#f24e1e" },
+  { name: "Postman", icon: <SiPostman />, color: "#ff6c37" },
+  { name: "OpenAI", icon: <SiOpenai />, color: null },
+];

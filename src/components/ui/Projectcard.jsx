@@ -73,19 +73,24 @@ const ProjectCard = ({ project, priority, isMobileRef }) => {
           <div className="flex gap-3 mt-2">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href={project.github || "#"}
+              aria-disabled={!project.github}
+              tabIndex={!project.github ? -1 : undefined}
+              onClick={(e) => { if (!project.github) e.preventDefault(); }}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-xs font-semibold hover:scale-105 transition-transform ${
                 !project.github ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              <FaGithub className="text-sm" /> Code
+              <FaGithub aria-hidden="true" className="text-sm" /> Code
             </a>
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href={project.live}
               className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent text-white text-xs font-semibold hover:scale-105 transition-transform"
             >
-              <HiArrowUpRight className="text-sm" /> Live
+              <HiArrowUpRight aria-hidden="true" className="text-sm" /> Live
             </a>
           </div>
         </div>
@@ -120,15 +125,24 @@ const ProjectCard = ({ project, priority, isMobileRef }) => {
         <div className="md:hidden flex gap-2 mt-4">
           <a
             href={project.github || "#"}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-black/10 dark:border-white/10 text-xs font-semibold hover:border-accent/40 hover:text-accent transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-disabled={!project.github}
+            tabIndex={!project.github ? -1 : undefined}
+            onClick={(e) => { if (!project.github) e.preventDefault(); }}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-black/10 dark:border-white/10 text-xs font-semibold hover:border-accent/40 hover:text-accent transition-colors ${
+              !project.github ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            <FaGithub /> Code
+            <FaGithub aria-hidden="true" /> Code
           </a>
           <a
             href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-accent text-white text-xs font-semibold hover:opacity-90 transition-opacity"
           >
-            <HiArrowUpRight /> Live
+            <HiArrowUpRight aria-hidden="true" /> Live
           </a>
         </div>
       </div>

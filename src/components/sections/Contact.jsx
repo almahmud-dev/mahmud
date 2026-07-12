@@ -280,7 +280,7 @@ export default function Contact() {
                     </span>
                   </div>
                 </div>
-                <FaArrowRightLong className="text-[10px] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200 -rotate-45 text-blue-500" />
+                <FaArrowRightLong aria-hidden="true" className="text-[10px] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200 -rotate-45 text-blue-500" />
               </a>
             ))}
           </div>
@@ -302,25 +302,40 @@ export default function Contact() {
 
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-4">
-                {["Your Name", "Your Email"].map((ph, i) => (
-                  <input
-                    key={i}
-                    type={i === 1 ? "email" : "text"}
-                    placeholder={ph}
-                    className="w-full
-                      text-slate-700 dark:text-slate-200
-                      placeholder:text-slate-400 dark:placeholder:text-slate-500
-                      h-14 px-5 rounded-2xl
-                      bg-[#f8faff] dark:bg-[#0d0f14]
-                      border border-slate-200 dark:border-slate-700/60
-                      focus:border-blue-500 dark:focus:border-blue-400
-                      focus:ring-4 focus:ring-blue-500/10
-                      outline-none transition-all"
-                  />
+                {[
+                  { ph: "Your Name", id: "contact-name", type: "text", autoComplete: "name" },
+                  { ph: "Your Email", id: "contact-email", type: "email", autoComplete: "email" },
+                ].map((f) => (
+                  <div key={f.id}>
+                    <label htmlFor={f.id} className="sr-only">
+                      {f.ph}
+                    </label>
+                    <input
+                      id={f.id}
+                      name={f.id}
+                      type={f.type}
+                      autoComplete={f.autoComplete}
+                      placeholder={f.ph}
+                      className="w-full
+                        text-slate-700 dark:text-slate-200
+                        placeholder:text-slate-400 dark:placeholder:text-slate-500
+                        h-14 px-5 rounded-2xl
+                        bg-[#f8faff] dark:bg-[#0d0f14]
+                        border border-slate-200 dark:border-slate-700/60
+                        focus:border-blue-500 dark:focus:border-blue-400
+                        focus:ring-4 focus:ring-blue-500/10
+                        outline-none transition-all"
+                    />
+                  </div>
                 ))}
               </div>
 
+              <label htmlFor="contact-subject" className="sr-only">
+                Subject
+              </label>
               <input
+                id="contact-subject"
+                name="subject"
                 type="text"
                 placeholder="Subject"
                 className="w-full
@@ -334,7 +349,12 @@ export default function Contact() {
                   outline-none transition-all"
               />
 
+              <label htmlFor="contact-message" className="sr-only">
+                Your Message
+              </label>
               <textarea
+                id="contact-message"
+                name="message"
                 rows="5"
                 placeholder="Your Message"
                 className="w-full min-h-[180px] px-5 py-4 rounded-2xl

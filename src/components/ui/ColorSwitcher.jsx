@@ -38,6 +38,8 @@ const ColorSwitcher = () => {
         <button
           key={name}
           onClick={() => handleChange(name)}
+          aria-label={`Switch accent color to ${name.replace("theme-", "")}`}
+          aria-pressed={active === name}
           className={`w-7 md:w-8 aspect-square rounded-full transition-all border ${
             active === name ? "scale-110 border-black dark:border-white" : "border-transparent"
           }`}

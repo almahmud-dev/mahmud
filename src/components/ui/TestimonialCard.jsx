@@ -88,6 +88,7 @@ export default function TestimonialCard({ item, index }) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="text-orange-500"
+            aria-hidden="true"
           >
             <path
               d="M10 11H6.5C6.5 14 5 15 3 15V18C7 18 10 15 10 11ZM21 11H17.5C17.5 14 16 15 14 15V18C18 18 21 15 21 11Z"
@@ -95,10 +96,14 @@ export default function TestimonialCard({ item, index }) {
             />
           </svg>
 
-          <div className="flex items-center gap-1 text-orange-400">
+          <div
+            className="flex items-center gap-1 text-orange-400"
+            role="img"
+            aria-label={`Rated ${item.rating} out of 5 stars`}
+          >
             {/* useMemo theke cached stars array use kora hocche */}
             {stars.map((_, i) => (
-              <FaStar key={i} className="text-sm" />
+              <FaStar key={i} aria-hidden="true" className="text-sm" />
             ))}
           </div>
         </div>
@@ -207,7 +212,7 @@ export default function TestimonialCard({ item, index }) {
             group-hover:text-orange-400
           "
           >
-            <Icon />
+            <Icon aria-hidden="true" />
           </div>
         </div>
       </div>

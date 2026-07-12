@@ -52,14 +52,14 @@ export default function NavbarDesktop({ scrolled, active, handleNav, open, setOp
 
       <Container className="h-14 px-0! flex items-center justify-between">
         <div className="flex items-center gap-8 px-4">
-          <button onClick={() => handleNav("hero")}>
+          <button onClick={() => handleNav("hero")} aria-label="Go to homepage">
             <Logo
               className="w-[70px] md:w-[60px] h-auto"
               accentColor="var(--color-accent)"
             />
           </button>
 
-          <div className="nav-pill-track hidden sm:flex items-center gap-1 bg-black/4 dark:bg-white/5 rounded-full px-1.5 py-1 border border-black/6 dark:border-white/6 relative">
+          <div className="nav-pill-track hidden sm:flex items-center gap-1 bg-black/4 dark:bg-white/5 rounded-full px-1.5 py-1 border border-black/6 dark:border-white/6 relative" role="navigation" aria-label="Section navigation">
             <span
               ref={pillRef}
               className="absolute top-1 bottom-1 bg-accent rounded-full pointer-events-none"
@@ -71,6 +71,7 @@ export default function NavbarDesktop({ scrolled, active, handleNav, open, setOp
                 key={item.id}
                 ref={(el) => (btnRefs.current[i] = el)}
                 onClick={() => handleNav(item.id)}
+                aria-current={active === item.id ? "true" : undefined}
                 className="relative px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors duration-200"
                 style={{ zIndex: 1 }}
               >
@@ -103,6 +104,7 @@ export default function NavbarDesktop({ scrolled, active, handleNav, open, setOp
               className="w-4 h-4"
               stroke="currentColor"
               strokeWidth="2"
+              aria-hidden="true"
             >
               <path
                 d="M3 8h10M9 4l4 4-4 4"
@@ -116,6 +118,9 @@ export default function NavbarDesktop({ scrolled, active, handleNav, open, setOp
           {/* Hamburger button — Navbar er vitore and sm: er nice dekhabe */}
           <button
             onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             className="sm:hidden flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full border border-black/10 dark:border-white/10 hover:border-accent hover:text-accent transition-[border-color,color] duration-200"
           >
             {open ? (

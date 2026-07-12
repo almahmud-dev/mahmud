@@ -116,7 +116,10 @@ export default function NavbarMobile({ active, handleNav, open, setOpen }) {
 
   return (
     <div
+      id="mobile-menu"
       ref={mobileMenuRef}
+      role="navigation"
+      aria-label="Mobile navigation"
       className="fixed top-14 left-0 w-full h-[calc(100dvh-3.5rem)] bg-white/97 dark:bg-[#080810]/97 backdrop-blur-md flex-col z-50"
       style={{ display: "none" }}
     >
@@ -126,6 +129,7 @@ export default function NavbarMobile({ active, handleNav, open, setOpen }) {
             key={item.id}
             ref={(el) => (navItemRefs.current[i] = el)}
             onClick={() => handleNav(item.id)}
+            aria-current={active === item.id ? "true" : undefined}
             className={`group flex items-center justify-between w-full py-3 px-4 rounded-2xl transition-colors duration-200 text-left ${
               active === item.id
                 ? "bg-accent/10 text-accent"

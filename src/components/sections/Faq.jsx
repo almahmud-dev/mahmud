@@ -5,8 +5,9 @@ import SectionHeader from "@/src/components/ui/SectionHeader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import { faqData } from "@/src/helper/helper";
+// import { faqData } from "@/src/helper/helper";
 import MagneticButton from "../ui/MagneticButton";
+import { faqData } from "@/src/helper";
 
 gsap.registerPlugin(ScrollTrigger);
 
