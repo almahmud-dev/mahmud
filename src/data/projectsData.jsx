@@ -1,4 +1,4 @@
-import { MdPayment, MdSecurity } from "react-icons/md";
+import { MdOutlineSecurity, MdPayment, MdSecurity } from "react-icons/md";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -14,7 +14,7 @@ import {
   SiGreensock,
   SiJavascript,
 } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
+import { TbApi, TbBrandReactNative } from "react-icons/tb";
 const crmDashboard =
   "https://res.cloudinary.com/dlqvctrgm/image/upload/f_auto,q_auto,c_limit,w_1200/v1783867210/dashboard_p7dnlb";
 const edufilo =
@@ -118,8 +118,8 @@ export const projects = [
   {
     title: "Vertex CRM Dashboard",
     image: crmDashboard,
-    live: "https://your-live-link.com",
-    github: "https://github.com/your-username/vertex-crm",
+    live: "https://crm-dashboard-ten-orpin.vercel.app",
+    github: "https://github.com/almahmud-dev/crm-dashboard",
     category: "Full Stack",
     types: ["Full Stack", "TypeScript", "Next.js"],
     status: "Completed",
@@ -136,8 +136,8 @@ export const projects = [
   {
     title: "EduFilos – Madrasah Management SaaS",
     image: edufilo,
-    live: "https://your-live-link.com",
-    github: "https://github.com/your-username/edufilos",
+    live: "https://edufilo.vercel.app",
+    github: "https://github.com/almahmud-dev/edufilo",
     category: "Full Stack",
     types: ["SaaS", "Education", "Next.js"],
     status: "Completed",
@@ -166,6 +166,8 @@ export const projects = [
       { name: "Tailwind", icon: <SiTailwindcss /> },
       { name: "Firebase", icon: <SiFirebase /> },
       { name: "Cloudinary", icon: <SiCloudinary /> },
+      { name: "API", icon: <TbApi /> },
+      { name: "Authentication", icon: <MdOutlineSecurity /> },
     ],
   },
   {
@@ -206,7 +208,7 @@ export const projects = [
   {
     title: "SWE Domain",
     image: sweDomain,
-    live: "https://nextjs-landingpage-lyart.vercel.app/",
+    live: "https://domainshub-nine.vercel.app/",
     github: "https://github.com/almahmud-dev/Nextjs-landingpage",
     category: "Next.js",
     types: ["Animation", "Tailwind", "Next.js"],

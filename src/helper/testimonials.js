@@ -11,21 +11,23 @@ import { cld } from "./constants";
 export const testimonials = [
   {
     id: 1,
-    name: "Hasnm Uddin",
+    name: "Md Anowar Hosan",
     role: "Founder",
     company: "WBB Trust",
     avatar: cld("v1779868910/testimonial1_c4x4or.png"),
     rating: 5,
-    text: "Working with Al Mahmud was an excellent experience from start to finish. He pays attention to every detail, communicates clearly, and genuinely cares about delivering quality work. The final frontend felt smooth, modern, and incredibly polished.",
+    link: "https://www.linkedin.com/in/md-anowar-hosan-9b0a6521a/",
+    text: "Excellent work. The code quality was clean and professional, the design was responsive, and everything worked perfectly. He was very cooperative, communicated clearly, and delivered the project on time. I’m really satisfied with the overall work and would highly recommend him to anyone looking for a skilled developer.Thank you for the great work",
   },
   {
     id: 2,
-    name: "Jihad Mia",
+    name: "Md. Khaliduzzaman Tanoy",
     role: "Project Manager",
-    company: "EBT",
+    company: "TechFilos",
     avatar: cld("v1779868910/testimonial2_v4lkpf.png"),
     rating: 5,
-    text: "Al Mahmud consistently delivered clean, responsive, and well-structured interfaces throughout our project. His problem-solving mindset and focus on user experience made a noticeable difference in the final product.",
+    link: "https://www.techfilos.com",
+    text: "Working with Al Mahmud was a great experience. He quickly understood our requirements and translated them into a clean, modern website. Communication was always clear, deadlines were met, and the final result exceeded our expectations. I would gladly work with him again on future projects.",
   },
   {
     id: 3,
